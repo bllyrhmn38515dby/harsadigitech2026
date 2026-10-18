@@ -1,0 +1,1189 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PT. Harsa Digital Teknologi | Harsa Digitech - Konsultan IT & Software House</title>
+  <meta name="description" content="PT. Harsa Digital Teknologi (Harsa Digitech) adalah perusahaan konsultan IT dan software house terpercaya di Bogor, Indonesia. Moto: 'Inspiring Innovation, Empowering Digital Excellence'.">
+  <meta name="keywords" content="PT Harsa Digital Teknologi, Harsa Digitech, HDT, Konsultan IT Bogor, Software House Indonesia, Jasa Pembuatan Aplikasi, Jasa Pembuatan Website, IT Infrastructure, IT Security">
+  <meta name="author" content="PT. Harsa Digital Teknologi">
+
+  <!-- Open Graph / Meta -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="PT. Harsa Digital Teknologi | Harsa Digitech">
+  <meta property="og:description" content="Inspiring Innovation, Empowering Digital Excellence — Mitra terpercaya Anda dalam transformasi digital, software rekayasa kustom, dan arsitektur IT modern.">
+  <meta property="og:image" content="assets/images/hdt-logo.png">
+
+  <!-- Google Fonts: Plus Jakarta Sans & Outfit & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="css/glass.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+  <!-- Ambient Liquid Canvas Background -->
+  <canvas id="liquid-canvas" aria-hidden="true"></canvas>
+
+  <!-- Notification Toast Container -->
+  <div id="toast-container" class="toast-container" aria-live="polite"></div>
+
+  <!-- Header / Navigation Bar -->
+  <header class="navbar-wrapper">
+    <div class="navbar-container glass-panel">
+      <!-- Brand Logo -->
+      <a href="#hero" class="brand-logo" id="nav-brand-logo" aria-label="Harsa Digitech Home">
+        <div class="hdt-logo-wrap">
+          <img src="assets/images/hdt-logo.png" alt="Logo PT. Harsa Digital Teknologi" class="hdt-logo-img">
+        </div>
+        <div class="brand-name">
+          <span class="brand-title">HARSA DIGITECH</span>
+          <span class="brand-sub">PT. HARSA DIGITAL TEKNOLOGI</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Menu -->
+      <nav class="nav-menu" id="desktop-nav" aria-label="Main Navigation">
+        <a href="#tentang" class="nav-link" id="nav-link-about">Tentang</a>
+        <a href="#layanan" class="nav-link" id="nav-link-services">Layanan</a>
+        <a href="#portofolio" class="nav-link" id="nav-link-portfolio">Portofolio</a>
+        <a href="#kalkulator" class="nav-link" id="nav-link-estimator">Kalkulator</a>
+        <a href="#legalitas" class="nav-link" id="nav-link-legal">Legalitas</a>
+        <a href="#kontak" class="nav-link" id="nav-link-contact">Kontak</a>
+      </nav>
+
+      <!-- Right Action Items -->
+      <div class="nav-actions">
+        <!-- Live Status Indicator Pill -->
+        <div class="status-badge" title="Status Operasional Perusahaan">
+          <span class="status-dot"></span>
+          <span class="status-text">Bogor, Indonesia</span>
+        </div>
+
+        <!-- Theme Toggle Button -->
+        <button id="theme-toggle-btn" class="theme-btn" aria-label="Ganti Tema Tampilan" title="Ganti Mode Terang / Gelap">
+          <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+
+        <!-- CTA Button -->
+        <a href="#kontak" class="btn btn-primary btn-sm liquid-btn" id="nav-cta-btn">
+          <span>Konsultasi Proyek</span>
+          <svg viewBox="0 0 20 20" fill="currentColor" class="btn-arrow-icon">
+            <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+          </svg>
+        </a>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button id="mobile-menu-btn" class="mobile-toggle" aria-label="Buka Menu Navigasi" aria-expanded="false">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Navigation -->
+    <div id="mobile-drawer" class="mobile-drawer glass-panel" aria-hidden="true">
+      <nav class="mobile-nav">
+        <a href="#tentang" class="mobile-nav-link">Tentang Harsa</a>
+        <a href="#layanan" class="mobile-nav-link">Layanan Konsultasi & IT</a>
+        <a href="#portofolio" class="mobile-nav-link">Portofolio Klien</a>
+        <a href="#kalkulator" class="mobile-nav-link">Kalkulator Estimasi</a>
+        <a href="#legalitas" class="mobile-nav-link">Legalitas Perusahaan</a>
+        <a href="assets/docs/Company-Profile-PT-Harsa-Digital-Teknologi.pdf" class="mobile-nav-link" download>Unduh Compro (PDF)</a>
+        <a href="#kontak" class="mobile-nav-link mobile-cta-link">Mulai Konsultasi</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section id="hero" class="hero-section">
+      <div class="hero-container container">
+        <div class="hero-content">
+          <!-- Top Badge -->
+          <div class="pill-badge glass-panel animate-fade-in" id="hero-badge">
+            <span class="badge-sparkle">✦</span>
+            <span>PT. HARSA DIGITAL TEKNOLOGI</span>
+            <span class="badge-separator">•</span>
+            <span class="badge-highlight">HARSA DIGITECH</span>
+          </div>
+
+          <!-- Main Heading (Single H1) -->
+          <h1 class="hero-title animate-fade-in delay-1" id="hero-heading">
+            Mitra Tepercaya Konsultasi IT & <span class="text-gradient">Rekayasa Solusi Digital Terdepan</span>
+          </h1>
+
+          <div class="hero-motto animate-fade-in delay-1">
+            "Inspiring Innovation, Empowering Digital Excellence"
+          </div>
+
+          <!-- Hero Subtitle -->
+          <p class="hero-description animate-fade-in delay-2">
+            PT. Harsa Digital Teknologi hadir sebagai akselerator transformasi digital bagi instansi pemerintah dan perusahaan swasta di Indonesia. Kami merancang arsitektur perangkat lunak kustom, portal web cerdas, dan infrastruktur IT yang aman dan teruji.
+          </p>
+
+          <!-- Dual CTAs -->
+          <div class="hero-actions animate-fade-in delay-3">
+            <a href="#kalkulator" class="btn btn-primary btn-lg liquid-btn" id="hero-primary-cta">
+              <span class="btn-text">Hitung Estimasi Proyek</span>
+              <svg viewBox="0 0 20 20" fill="currentColor" class="btn-icon">
+                <path fill-rule="evenodd" d="M6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V4a2 2 0 00-2-2H6zm1 2a1 1 0 000 2h6a1 1 0 100-2H7zm6 7a1 1 0 011 1v3a1 1 0 11-2 0v-3a1 1 0 011-1zm-3 3a1 1 0 100 2h.01a1 1 0 100-2H10zm-4 1a1 1 0 011-1h.01a1 1 0 110 2H7a1 1 0 01-1-1zm1-4a1 1 0 100 2h.01a1 1 0 100-2H7zm2 1a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1zm4-1a1 1 0 100 2h.01a1 1 0 100-2H13zM7 8a1 1 0 011-1h4a1 1 0 110 2H8a1 1 0 01-1-1z" clip-rule="evenodd"/>
+              </svg>
+            </a>
+            <a href="assets/docs/Company-Profile-PT-Harsa-Digital-Teknologi.pdf" download class="btn btn-secondary btn-lg glass-panel" id="hero-compro-cta" title="Unduh Company Profile Resmi PDF">
+              <span>Unduh Compro (PDF)</span>
+              <svg viewBox="0 0 20 20" fill="currentColor" class="btn-icon">
+                <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"/>
+              </svg>
+            </a>
+          </div>
+
+          <!-- Hero Metrics Bar -->
+          <div class="hero-stats-row animate-fade-in delay-4">
+            <div class="stat-item">
+              <span class="stat-number">100%</span>
+              <span class="stat-label">Legalitas AHU & NIB</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+              <span class="stat-number">Multi-OPD</span>
+              <span class="stat-label">Klien Pemkot & Swasta</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+              <span class="stat-number">6+ Bidang</span>
+              <span class="stat-label">Layanan IT Terpadu</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+              <span class="stat-number">24/7</span>
+              <span class="stat-label">Dukungan & Hypercare</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Interactive Hero Showcase Card (Liquid Glass with 3D Image & Live Badges) -->
+        <div class="hero-visual animate-fade-in delay-2">
+          <div class="visual-card-wrapper" id="hero-tilt-card">
+            <div class="liquid-glass-card hero-preview-card">
+              <!-- Top bar simulating app window -->
+              <div class="glass-window-header">
+                <div class="window-dots">
+                  <span class="dot red"></span>
+                  <span class="dot yellow"></span>
+                  <span class="dot green"></span>
+                </div>
+                <div class="window-title">harsadigitech.com • Enterprise Architecture</div>
+                <div class="window-controls">
+                  <span class="sync-tag">⚡ Live Hub</span>
+                </div>
+              </div>
+
+              <!-- Main Visual Image Generated -->
+              <div class="hero-image-container">
+                <img src="assets/images/hero-dashboard.jpg" alt="Harsa Digitech Enterprise Software Architecture Dashboard" class="hero-img" loading="eager">
+                <div class="image-liquid-overlay"></div>
+              </div>
+
+              <!-- Floating Liquid Badges -->
+              <div class="floating-glass-badge badge-top-left glass-panel">
+                <div class="badge-icon green-glow">
+                  <svg viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                  </svg>
+                </div>
+                <div class="badge-text-group">
+                  <span class="badge-title">E-Government & Corporate</span>
+                  <span class="badge-desc">Terdaftar Resmi Kemenkumham RI</span>
+                </div>
+              </div>
+
+              <div class="floating-glass-badge badge-bottom-right glass-panel">
+                <div class="badge-icon blue-glow">
+                  <svg viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M13 7H7v6h6V7z"/>
+                    <path fill-rule="evenodd" d="M7 2a1 1 0 012 0v1h2V2a1 1 0 112 0v1h2a2 2 0 012 2v2h1a1 1 0 110 2h-1v2h1a1 1 0 110 2h-1v2a2 2 0 01-2 2h-2v1a1 1 0 11-2 0v-1H9v1a1 1 0 11-2 0v-1H5a2 2 0 01-2-2v-2H2a1 1 0 110-2h1V9H2a1 1 0 010-2h1V5a2 2 0 012-2h2V2zM5 5h10v10H5V5z" clip-rule="evenodd"/>
+                  </svg>
+                </div>
+                <div class="badge-text-group">
+                  <span class="badge-title">Digital Excellence</span>
+                  <span class="badge-desc">Reliable IT Solutions & Security</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Real Clients Marquee (From Official Compro) -->
+      <div class="trusted-marquee-section">
+        <div class="container">
+          <p class="marquee-caption">KLIEN & MITRA TERPERCAYA PT. HARSA DIGITAL TEKNOLOGI</p>
+          <div class="marquee-scroller">
+            <div class="marquee-track">
+              <div class="partner-logo-item"><span>INSPEKTORAT</span><small>KOTA BOGOR</small></div>
+              <div class="partner-logo-item"><span>SATPOL PP</span><small>KOTA BOGOR</small></div>
+              <div class="partner-logo-item"><span>BAPPENDA</span><small>KOTA BOGOR</small></div>
+              <div class="partner-logo-item"><span>DINAS KOPERASI & UMKM</span><small>KOTA BOGOR</small></div>
+              <div class="partner-logo-item"><span>DINAS KESEHATAN</span><small>KOTA BOGOR</small></div>
+              <div class="partner-logo-item"><span>EMIRAL RANGGA</span><small>LAW FIRM</small></div>
+              <div class="partner-logo-item"><span>PUSKESMAS CIPAKU</span><small>KOTA BOGOR</small></div>
+              <!-- Duplicate for seamless scroll -->
+              <div class="partner-logo-item"><span>INSPEKTORAT</span><small>KOTA BOGOR</small></div>
+              <div class="partner-logo-item"><span>SATPOL PP</span><small>KOTA BOGOR</small></div>
+              <div class="partner-logo-item"><span>BAPPENDA</span><small>KOTA BOGOR</small></div>
+              <div class="partner-logo-item"><span>DINAS KOPERASI & UMKM</span><small>KOTA BOGOR</small></div>
+              <div class="partner-logo-item"><span>DINAS KESEHATAN</span><small>KOTA BOGOR</small></div>
+              <div class="partner-logo-item"><span>EMIRAL RANGGA</span><small>LAW FIRM</small></div>
+              <div class="partner-logo-item"><span>PUSKESMAS CIPAKU</span><small>KOTA BOGOR</small></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FILOSOFI & NILAI INTI PERUSAHAAN (NEW SECTION FROM COMPRO) -->
+    <section id="tentang" class="philosophy-section section-padding">
+      <div class="container">
+        <div class="section-header text-center">
+          <div class="pill-badge glass-panel">
+            <span>TENTANG KAMI</span>
+          </div>
+          <h2 class="section-title">Filosofi & Fondasi PT. Harsa Digital Teknologi</h2>
+          <p class="section-subtitle">
+            Hadir dengan komitmen menjembatani kesenjangan digital dan mendorong transformasi teknologi yang inklusif di Indonesia.
+          </p>
+        </div>
+
+        <div class="philosophy-banner glass-panel">
+          <div class="philo-content">
+            <p class="philo-lead">
+              Kata <strong>"Harsa"</strong> berasal dari bahasa Sansekerta yang bermakna <strong>kebahagiaan, kegembiraan, dan kesenangan</strong>.
+              Makna ini menjadi komitmen PT Harsa Digital Teknologi untuk menciptakan masa depan digital yang lebih baik, di mana teknologi menjadi sumber kebahagiaan, kemajuan, pemerataan, dan pemberdayaan bagi semua pemangku kepentingan.
+            </p>
+            <p class="philo-quote">
+              "Menuju Masa Depan Digital yang Lebih Baik melalui Dua Pilar Utama: Inspirasi dan Pemberdayaan."
+            </p>
+          </div>
+        </div>
+
+        <!-- 4 Core Values Grid -->
+        <div class="values-grid">
+          <div class="value-card glass-panel">
+            <div class="val-icon">🛡️</div>
+            <h3 class="val-title">Integritas</h3>
+            <p class="val-desc">Kami menjunjung tinggi kejujuran, etika profesional, dan transparansi penuh dalam setiap tindakan dan kemitraan.</p>
+          </div>
+
+          <div class="value-card glass-panel">
+            <div class="val-icon">💡</div>
+            <h3 class="val-title">Inovasi</h3>
+            <p class="val-desc">Kami terus berinovasi untuk merancang dan menciptakan solusi digital yang lebih adaptif, modern, dan bernilai tambah tinggi.</p>
+          </div>
+
+          <div class="value-card glass-panel">
+            <div class="val-icon">🤝</div>
+            <h3 class="val-title">Kolaborasi</h3>
+            <p class="val-desc">Kami bekerja sama erat dengan mitra instansi dan pelanggan untuk menyelaraskan visi dan meraih tujuan strategis bersama.</p>
+          </div>
+
+          <div class="value-card glass-panel">
+            <div class="val-icon">⭐</div>
+            <h3 class="val-title">Keunggulan</h3>
+            <p class="val-desc">Komitmen tanpa kompromi untuk memberikan hasil rekayasa perangkat lunak dengan standar kualitas dan keandalan terbaik.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CORE SERVICES / LINGKUP LAYANAN RESMI -->
+    <section id="layanan" class="services-section section-padding">
+      <div class="container">
+        <div class="section-header text-center">
+          <div class="pill-badge glass-panel">
+            <span>LINGKUP LAYANAN</span>
+          </div>
+          <h2 class="section-title">Solusi Teknologi Informasi Menyeluruh</h2>
+          <p class="section-subtitle">
+            Berdasarkan klasifikasi kompetensi dan legalitas usaha KBLI, kami menyediakan layanan profesional untuk mengoptimalkan potensi teknologi informasi Anda.
+          </p>
+        </div>
+
+        <div class="services-grid">
+          <!-- Service Card 1 -->
+          <article class="service-card glass-panel" id="service-konsultasi-it">
+            <div class="service-icon-box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="service-svg">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                <line x1="8" y1="21" x2="16" y2="21"></line>
+                <line x1="12" y1="17" x2="12" y2="21"></line>
+              </svg>
+            </div>
+            <h3 class="service-title">Konsultasi IT & Strategi Digital</h3>
+            <p class="service-text">
+              Layanan konsultasi komputer, analisis proses bisnis, audit arsitektur TI, dan perencanaan roadmap transformasi digital untuk institusi publik dan korporat.
+            </p>
+            <ul class="service-highlights">
+              <li>Aktivitas Konsultasi Komputer & Tata Kelola TI</li>
+              <li>Manajemen Fasilitas TI & IT Master Plan</li>
+              <li>Konsultasi Manajemen & Efisiensi Sistem</li>
+            </ul>
+            <div class="service-footer">
+              <span class="service-tag">KBLI 62029 / 62090</span>
+              <a href="#kalkulator" class="service-action-link" data-service="Konsultasi IT">Hitung Biaya &rarr;</a>
+            </div>
+          </article>
+
+          <!-- Service Card 2 -->
+          <article class="service-card glass-panel" id="service-software-dev">
+            <div class="service-icon-box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="service-svg">
+                <polyline points="16 18 22 12 16 6"></polyline>
+                <polyline points="8 6 2 12 8 18"></polyline>
+              </svg>
+            </div>
+            <h3 class="service-title">Software & Application Development</h3>
+            <p class="service-text">
+              Pengembangan piranti lunak kustom, aplikasi web interaktif, sistem e-commerce, dan mobile application berbasis Android & iOS dengan arsitektur modern.
+            </p>
+            <ul class="service-highlights">
+              <li>Aktivitas Pemrograman Komputer (KBLI 62019)</li>
+              <li>Aplikasi E-Commerce & Perdagangan Digital (62012)</li>
+              <li>Penerbitan Piranti Lunak / Software (KBLI 58200)</li>
+            </ul>
+            <div class="service-footer">
+              <span class="service-tag">KBLI 62019 / 58200</span>
+              <a href="#kalkulator" class="service-action-link" data-service="Software Development">Hitung Biaya &rarr;</a>
+            </div>
+          </article>
+
+          <!-- Service Card 3 -->
+          <article class="service-card glass-panel" id="service-web-development">
+            <div class="service-icon-box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="service-svg">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="2" y1="12" x2="22" y2="12"></line>
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+              </svg>
+            </div>
+            <h3 class="service-title">Website Design & Development</h3>
+            <p class="service-text">
+              Pembuatan portal web instansi pemerintah, website profil korporat profesional, dan platform digital komersial maupun non-komersial berkinerja tinggi.
+            </p>
+            <ul class="service-highlights">
+              <li>Portal Web & Platform Digital (KBLI 63121/63122)</li>
+              <li>Desain UI/UX Eksklusif & Ramah Pengguna</li>
+              <li>Website Maintenance & Pemeliharaan Berkala</li>
+            </ul>
+            <div class="service-footer">
+              <span class="service-tag">KBLI 63122</span>
+              <a href="#kalkulator" class="service-action-link" data-service="Website Design & Development">Hitung Biaya &rarr;</a>
+            </div>
+          </article>
+
+          <!-- Service Card 4 -->
+          <article class="service-card glass-panel" id="service-infra-hosting">
+            <div class="service-icon-box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="service-svg">
+                <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
+              </svg>
+            </div>
+            <h3 class="service-title">IT Infrastructure & Hosting Services</h3>
+            <p class="service-text">
+              Penyediaan infrastruktur server andal, konfigurasi cloud, aktivitas hosting terkelola, pemantauan jaringan, serta pengadaan perangkat komputasi.
+            </p>
+            <ul class="service-highlights">
+              <li>Aktivitas Hosting & Server Cloud (KBLI 63112)</li>
+              <li>Perdagangan Komputer & Perlengkapan (KBLI 46511)</li>
+              <li>SLA Uptime Tinggi & Manajemen Backup Data</li>
+            </ul>
+            <div class="service-footer">
+              <span class="service-tag">KBLI 63112 / 46511</span>
+              <a href="#kalkulator" class="service-action-link" data-service="IT Infrastructure Services">Hitung Biaya &rarr;</a>
+            </div>
+          </article>
+
+          <!-- Service Card 5 -->
+          <article class="service-card glass-panel" id="service-security">
+            <div class="service-icon-box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="service-svg">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              </svg>
+            </div>
+            <h3 class="service-title">IT Security & Perlindungan Data</h3>
+            <p class="service-text">
+              Audit keamanan sistem aplikasi, hardening server, pengujian kerentanan (vulnerability assessment), dan perlindungan integritas data penting instansi.
+            </p>
+            <ul class="service-highlights">
+              <li>Audit Keamanan Web & Gateway Enkripsi SSL/TLS</li>
+              <li>Mitigasi Serangan Cyber & Kebocoran Data</li>
+              <li>Standar Pengamanan Aplikasi Berbasis OWASP</li>
+            </ul>
+            <div class="service-footer">
+              <span class="service-tag">Cyber Defense</span>
+              <a href="#kalkulator" class="service-action-link" data-service="IT Security">Hitung Biaya &rarr;</a>
+            </div>
+          </article>
+
+          <!-- Service Card 6 -->
+          <article class="service-card glass-panel" id="service-multimedia">
+            <div class="service-icon-box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="service-svg">
+                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+              </svg>
+            </div>
+            <h3 class="service-title">Multimedia & Creative Design</h3>
+            <p class="service-text">
+              Jasa desain komunikasi visual, aset grafis profesional, media interaktif, dokumentasi digital, dan jasa penunjang percetakan untuk keperluan korporat.
+            </p>
+            <ul class="service-highlights">
+              <li>Desain Komunikasi Visual & Grafis (KBLI 74130)</li>
+              <li>Jasa Multimedia & Media Promosi Digital (61929)</li>
+              <li>Kegiatan Jasa Penunjang Percetakan (KBLI 18120)</li>
+            </ul>
+            <div class="service-footer">
+              <span class="service-tag">KBLI 74130 / 18120</span>
+              <a href="#kalkulator" class="service-action-link" data-service="Multimedia Design">Hitung Biaya &rarr;</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- REAL PORTFOLIO & CASE STUDIES (FROM OFFICIAL COMPRO) -->
+    <section id="portofolio" class="portfolio-section section-padding">
+      <div class="container">
+        <div class="section-header text-center">
+          <div class="pill-badge glass-panel">
+            <span>DATA PORTOFOLIO NYATA</span>
+          </div>
+          <h2 class="section-title">Solusi Nyata yang Telah Dipercaya Klien Kami</h2>
+          <p class="section-subtitle">
+            Karya sistem informasi terapan yang aktif beroperasi melayani kebutuhan instansi pemerintah dan entitas bisnis.
+          </p>
+        </div>
+
+        <!-- Filter Tabs -->
+        <div class="portfolio-tabs-container">
+          <div class="portfolio-tabs glass-panel" role="tablist">
+            <button class="portfolio-tab-btn active" data-filter="all" role="tab" aria-selected="true">Semua Proyek</button>
+            <button class="portfolio-tab-btn" data-filter="pemerintah" role="tab" aria-selected="false">Pemerintahan (E-Gov)</button>
+            <button class="portfolio-tab-btn" data-filter="layanan" role="tab" aria-selected="false">Layanan Publik & UMKM</button>
+            <button class="portfolio-tab-btn" data-filter="swasta" role="tab" aria-selected="false">Korporat / Swasta</button>
+          </div>
+        </div>
+
+        <!-- Portfolio Cards Grid -->
+        <div class="portfolio-grid" id="portfolio-grid">
+          <!-- Case Study 1: SIMAPAN -->
+          <article class="case-card glass-panel" data-category="pemerintah" id="case-simapan">
+            <div class="case-img-wrap">
+              <img src="assets/images/hero-dashboard.jpg" alt="Aplikasi SIMAPAN Inspektorat Kota Bogor" class="case-thumb" loading="lazy">
+              <div class="case-overlay">
+                <span class="category-pill">E-Government</span>
+              </div>
+            </div>
+            <div class="case-body">
+              <div class="case-meta">
+                <span class="client-name">Inspektorat Kota Bogor</span>
+                <span class="case-year">Produksi Aktif</span>
+              </div>
+              <h3 class="case-title">Aplikasi SIMAPAN</h3>
+              <p class="case-desc">
+                Sistem Informasi Manajemen Pengawasan & Audit Internal Pemerintahan Kota Bogor untuk monitoring tindak lanjut Laporan Hasil Pemeriksaan (LHP).
+              </p>
+              <div class="case-metrics-badge">
+                <div class="metric-cell">
+                  <span class="m-val">100%</span>
+                  <span class="m-label">Digital LHP</span>
+                </div>
+                <div class="metric-cell">
+                  <span class="m-val">Multi-OPD</span>
+                  <span class="m-label">Kota Bogor</span>
+                </div>
+                <div class="metric-cell">
+                  <span class="m-val">-65%</span>
+                  <span class="m-label">Waktu Rekap</span>
+                </div>
+              </div>
+              <div class="tech-chips">
+                <span class="tech-chip">Audit Workflow</span>
+                <span class="tech-chip">Enkripsi Dokumen</span>
+                <span class="tech-chip">PostgreSQL</span>
+                <span class="tech-chip">Role-Based Access</span>
+              </div>
+              <button class="btn btn-secondary btn-sm glass-panel btn-view-case" data-case="simapan">
+                Lihat Bedah Arsitektur &rarr;
+              </button>
+            </div>
+          </article>
+
+          <!-- Case Study 2: SILAJANG -->
+          <article class="case-card glass-panel" data-category="pemerintah" id="case-silajang">
+            <div class="case-img-wrap">
+              <img src="assets/images/case-aicloud.jpg" alt="Aplikasi SILAJANG Satpol PP Kota Bogor" class="case-thumb" loading="lazy">
+              <div class="case-overlay">
+                <span class="category-pill">Ketertiban Umum</span>
+              </div>
+            </div>
+            <div class="case-body">
+              <div class="case-meta">
+                <span class="client-name">Satpol PP Kota Bogor</span>
+                <span class="case-year">Produksi Aktif</span>
+              </div>
+              <h3 class="case-title">Aplikasi SILAJANG</h3>
+              <p class="case-desc">
+                Sistem Informasi Layanan dan Penindakan Ketertiban Umum untuk respon cepat patroli trantibum dan digitalisasi Berita Acara Pemeriksaan (BAP).
+              </p>
+              <div class="case-metrics-badge">
+                <div class="metric-cell">
+                  <span class="m-val">Real-Time</span>
+                  <span class="m-label">Disposisi</span>
+                </div>
+                <div class="metric-cell">
+                  <span class="m-val">GIS Map</span>
+                  <span class="m-label">Heatmap Titik</span>
+                </div>
+                <div class="metric-cell">
+                  <span class="m-val">-80%</span>
+                  <span class="m-label">Birokrasi Kertas</span>
+                </div>
+              </div>
+              <div class="tech-chips">
+                <span class="tech-chip">Geolocation GIS</span>
+                <span class="tech-chip">Mobile Web</span>
+                <span class="tech-chip">BAP Digital</span>
+                <span class="tech-chip">Dashboard Monitoring</span>
+              </div>
+              <button class="btn btn-secondary btn-sm glass-panel btn-view-case" data-case="silajang">
+                Lihat Bedah Arsitektur &rarr;
+              </button>
+            </div>
+          </article>
+
+          <!-- Case Study 3: ERALF.COM -->
+          <article class="case-card glass-panel" data-category="swasta" id="case-eralf">
+            <div class="case-img-wrap">
+              <img src="assets/images/case-finflow.jpg" alt="Website ERALF.COM Emiral Rangga Law Firm" class="case-thumb" loading="lazy">
+              <div class="case-overlay">
+                <span class="category-pill">Legal Portal</span>
+              </div>
+            </div>
+            <div class="case-body">
+              <div class="case-meta">
+                <span class="client-name">Emiral Rangga Law Firm</span>
+                <span class="case-year">Produksi Aktif</span>
+              </div>
+              <h3 class="case-title">Website ERALF.COM</h3>
+              <p class="case-desc">
+                Portal resmi firma hukum terkemuka dengan sistem reservasi konsultasi legal online, profil advokat, dan basis wawasan regulasi bisnis.
+              </p>
+              <div class="case-metrics-badge">
+                <div class="metric-cell">
+                  <span class="m-val">98/100</span>
+                  <span class="m-label">Lighthouse</span>
+                </div>
+                <div class="metric-cell">
+                  <span class="m-val">+120%</span>
+                  <span class="m-label">Lead Klien</span>
+                </div>
+                <div class="metric-cell">
+                  <span class="m-val">Top SEO</span>
+                  <span class="m-label">Google Search</span>
+                </div>
+              </div>
+              <div class="tech-chips">
+                <span class="tech-chip">Corporate CMS</span>
+                <span class="tech-chip">Online Booking</span>
+                <span class="tech-chip">SEO Semantic</span>
+                <span class="tech-chip">SSL Grade A</span>
+              </div>
+              <button class="btn btn-secondary btn-sm glass-panel btn-view-case" data-case="eralf">
+                Lihat Bedah Arsitektur &rarr;
+              </button>
+            </div>
+          </article>
+
+          <!-- Case Study 4: EMETROLOGI -->
+          <article class="case-card glass-panel" data-category="layanan" id="case-emetrologi">
+            <div class="case-img-wrap">
+              <img src="assets/images/hero-dashboard.jpg" alt="Aplikasi EMETROLOGI Dinas Koperasi dan UMKM Kota Bogor" class="case-thumb" loading="lazy">
+              <div class="case-overlay">
+                <span class="category-pill">Layanan UMKM</span>
+              </div>
+            </div>
+            <div class="case-body">
+              <div class="case-meta">
+                <span class="client-name">Dinas Koperasi & UMKM Kota Bogor</span>
+                <span class="case-year">Produksi Aktif</span>
+              </div>
+              <h3 class="case-title">Aplikasi EMETROLOGI</h3>
+              <p class="case-desc">
+                Digitalisasi pelayanan tera & metrologi legal alat ukur, takar, dan timbang (UTTP) guna melindungi konsumen dan membina pelaku UMKM pasar.
+              </p>
+              <div class="case-metrics-badge">
+                <div class="metric-cell">
+                  <span class="m-val">QR-Code</span>
+                  <span class="m-label">SKHP Digital</span>
+                </div>
+                <div class="metric-cell">
+                  <span class="m-val">-70%</span>
+                  <span class="m-label">Antrean Pos</span>
+                </div>
+                <div class="metric-cell">
+                  <span class="m-val">Valid</span>
+                  <span class="m-label">Segel Tera</span>
+                </div>
+              </div>
+              <div class="tech-chips">
+                <span class="tech-chip">QR Verification</span>
+                <span class="tech-chip">Database UMKM</span>
+                <span class="tech-chip">Reminder Masa Tera</span>
+              </div>
+              <button class="btn btn-secondary btn-sm glass-panel btn-view-case" data-case="emetrologi">
+                Lihat Bedah Arsitektur &rarr;
+              </button>
+            </div>
+          </article>
+
+          <!-- Case Study 5: TJSLP / CSR -->
+          <article class="case-card glass-panel" data-category="pemerintah" id="case-tjslp">
+            <div class="case-img-wrap">
+              <img src="assets/images/case-aicloud.jpg" alt="Aplikasi TJSLP CSR Bappenda Kota Bogor" class="case-thumb" loading="lazy">
+              <div class="case-overlay">
+                <span class="category-pill">Transparansi CSR</span>
+              </div>
+            </div>
+            <div class="case-body">
+              <div class="case-meta">
+                <span class="client-name">Bappenda Kota Bogor</span>
+                <span class="case-year">Produksi Aktif</span>
+              </div>
+              <h3 class="case-title">Aplikasi TJSLP / CSR</h3>
+              <p class="case-desc">
+                Sistem monitoring sinergi tanggung jawab sosial perusahaan dengan agenda prioritas pembangunan publik Kota Bogor secara transparan.
+              </p>
+              <div class="case-metrics-badge">
+                <div class="metric-cell">
+                  <span class="m-val">Sinergi</span>
+                  <span class="m-label">CSR Swasta</span>
+                </div>
+                <div class="metric-cell">
+                  <span class="m-val">Publik</span>
+                  <span class="m-label">Akuntabilitas</span>
+                </div>
+                <div class="metric-cell">
+                  <span class="m-val">Merata</span>
+                  <span class="m-label">Alokasi Bantuan</span>
+                </div>
+              </div>
+              <div class="tech-chips">
+                <span class="tech-chip">CSR Allocation</span>
+                <span class="tech-chip">Geotagging Proyek</span>
+                <span class="tech-chip">Dashboard Evaluasi</span>
+              </div>
+              <button class="btn btn-secondary btn-sm glass-panel btn-view-case" data-case="tjslp">
+                Lihat Bedah Arsitektur &rarr;
+              </button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CASE STUDY DETAIL MODAL (LIQUID GLASS POPUP) -->
+    <div id="case-modal" class="modal-backdrop" aria-hidden="true">
+      <div class="modal-dialog glass-panel" role="dialog" aria-modal="true" aria-labelledby="modal-case-title">
+        <button class="modal-close-btn" id="modal-close" aria-label="Tutup Detail Studi Kasus">&times;</button>
+        <div class="modal-content" id="modal-content-body">
+          <!-- Dynamic Content Inserted via JS -->
+        </div>
+      </div>
+    </div>
+
+    <!-- INTERACTIVE PROJECT ESTIMATOR WIDGET -->
+    <section id="kalkulator" class="estimator-section section-padding">
+      <div class="container">
+        <div class="estimator-wrapper glass-panel">
+          <div class="estimator-grid">
+            <!-- Left: Configurator Controls -->
+            <div class="estimator-controls">
+              <div class="pill-badge glass-panel">
+                <span>INTERACTIVE ESTIMATOR</span>
+              </div>
+              <h2 class="estimator-title">Kalkulator Estimasi Proyek & Roadmap</h2>
+              <p class="estimator-desc">
+                Pilih parameter arsitektur yang Anda butuhkan untuk mendapatkan estimasi transparan mengenai durasi sprint, susunan tim, dan estimasi biaya pengembangan bersama Harsa Digitech.
+              </p>
+
+              <form id="project-calculator-form" class="calc-form" onsubmit="return false;">
+                <!-- Step 1: Project Type -->
+                <div class="form-group">
+                  <label class="group-label">1. Tipe Inisiatif Proyek</label>
+                  <div class="radio-card-group" id="project-type-group">
+                    <label class="radio-card active">
+                      <input type="radio" name="project_type" value="mvp" checked>
+                      <span class="radio-title">Website / Aplikasi Instansi</span>
+                      <span class="radio-sub">Peluncuran portal atau sistem baru</span>
+                    </label>
+                    <label class="radio-card">
+                      <input type="radio" name="project_type" value="enterprise">
+                      <span class="radio-title">Platform Terintegrasi</span>
+                      <span class="radio-sub">Sistem berskala besar & multi-OPD</span>
+                    </label>
+                    <label class="radio-card">
+                      <input type="radio" name="project_type" value="modernization">
+                      <span class="radio-title">Re-platform & Cloud Server</span>
+                      <span class="radio-sub">Migrasi data, hosting & optimasi</span>
+                    </label>
+                    <label class="radio-card">
+                      <input type="radio" name="project_type" value="squad">
+                      <span class="radio-title">Dedicated Tim IT</span>
+                      <span class="radio-sub">Tim engineering & maintenance berkala</span>
+                    </label>
+                  </div>
+                </div>
+
+                <!-- Step 2: Target Scope Platforms -->
+                <div class="form-group">
+                  <label class="group-label">2. Lingkup Platform (Bisa pilih lebih dari satu)</label>
+                  <div class="checkbox-tag-group">
+                    <label class="check-tag active">
+                      <input type="checkbox" name="platform" value="web" checked>
+                      <span>Web Portal Responsif</span>
+                    </label>
+                    <label class="check-tag active">
+                      <input type="checkbox" name="platform" value="api" checked>
+                      <span>REST API & Integrasi Database</span>
+                    </label>
+                    <label class="check-tag">
+                      <input type="checkbox" name="platform" value="mobile">
+                      <span>Aplikasi Mobile (Android / iOS)</span>
+                    </label>
+                    <label class="check-tag">
+                      <input type="checkbox" name="platform" value="ai">
+                      <span>Keamanan & Sertifikat Digital (QR)</span>
+                    </label>
+                  </div>
+                </div>
+
+                <!-- Step 3: Architecture & Security Complexity -->
+                <div class="form-group">
+                  <label class="group-label">3. Standar Keamanan & Reliabilitas</label>
+                  <select id="calc-complexity" class="glass-select">
+                    <option value="standard">Standard Kepatuhan (SSL Enkripsi, Role-Based Access, Backup Rutin)</option>
+                    <option value="high" selected>Enterprise Grade (High Availability, Audit Trail, OWASP Protection)</option>
+                    <option value="mission-critical">Mission Critical (Zero-Downtime, Disaster Recovery, Standar E-Gov)</option>
+                  </select>
+                </div>
+              </form>
+            </div>
+
+            <!-- Right: Dynamic Realtime Calculation Output -->
+            <div class="estimator-result">
+              <div class="result-glass-card glass-panel">
+                <div class="result-header">
+                  <div class="result-badge">Hasil Analisis Algoritmik HDT</div>
+                  <div class="live-dot-pulse"></div>
+                </div>
+
+                <div class="price-projection-block">
+                  <span class="calc-label">Estimasi Investasi Proyek</span>
+                  <div class="price-value" id="calc-budget-display">Rp 50jt - 90jt</div>
+                  <span class="calc-subtext">*Estimasi komprehensif mencakup desain sistem, implementasi, testing & garansi pemeliharaan</span>
+                </div>
+
+                <div class="metric-breakdown-grid">
+                  <div class="breakdown-item">
+                    <span class="item-title">Durasi Pengerjaan</span>
+                    <span class="item-val" id="calc-duration-display">6 - 8 Minggu</span>
+                  </div>
+                  <div class="breakdown-item">
+                    <span class="item-title">Siklus Sprint</span>
+                    <span class="item-val" id="calc-sprints-display">3 - 4 Sprints</span>
+                  </div>
+                  <div class="breakdown-item full-width">
+                    <span class="item-title">Rekomendasi Komposisi Tim HDT</span>
+                    <span class="item-val squad-tags" id="calc-squad-display">
+                      <span class="squad-chip">1 Project Lead</span>
+                      <span class="squad-chip">2 Software Engineers</span>
+                      <span class="squad-chip">1 UI/UX Specialist</span>
+                      <span class="squad-chip">1 QA & Security Tester</span>
+                    </span>
+                  </div>
+                </div>
+
+                <div class="deliverables-checklist">
+                  <span class="checklist-title">Garansi Termasuk dalam Layanan:</span>
+                  <ul class="checklist-items">
+                    <li>✓ 100% Hak Milik Source Code & Dokumentasi Panduan Sistem</li>
+                    <li>✓ Garansi Bug-Free & Pemeliharaan Sistem Pasca Rilis</li>
+                    <li>✓ Surat Perjanjian Kerahasiaan (Non-Disclosure Agreement)</li>
+                    <li>✓ Pelatihan / Transfer Pengetahuan bagi Admin & Operator</li>
+                  </ul>
+                </div>
+
+                <div class="result-action">
+                  <button type="button" class="btn btn-orange btn-block liquid-btn" id="btn-apply-estimator">
+                    <span>Gunakan Hasil Ini untuk Konsultasi</span>
+                    <svg viewBox="0 0 20 20" fill="currentColor" class="btn-icon">
+                      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LEGAL PROFILE & PERIZINAN BERUSAHA (FROM OFFICIAL COMPRO) -->
+    <section id="legalitas" class="legal-section">
+      <div class="container">
+        <div class="section-header text-center">
+          <div class="pill-badge glass-panel">
+            <span>LEGALITAS & PROFIL PERUSAHAAN</span>
+          </div>
+          <h2 class="section-title">Badan Hukum Resmi & Terdaftar Negara</h2>
+          <p class="section-subtitle">
+            PT. Harsa Digital Teknologi beroperasi dengan legalitas lengkap sesuai peraturan perundang-undangan Republik Indonesia.
+          </p>
+        </div>
+
+        <div class="legal-grid">
+          <div class="legal-card glass-panel">
+            <span class="legal-badge-pill">Kemenkumham RI</span>
+            <h3 class="legal-title">SK Pengesahan</h3>
+            <span class="legal-val">AHU-011067.AH.01.30.Tahun 2023</span>
+            <p class="legal-sub">Terdaftar resmi sebagai badan hukum perseroan di pangkalan data Ditjen AHU Kemenkumham RI.</p>
+          </div>
+
+          <div class="legal-card glass-panel">
+            <span class="legal-badge-pill">Kementerian Investasi / BKPM</span>
+            <h3 class="legal-title">Nomor Induk Berusaha (NIB)</h3>
+            <span class="legal-val">1002230069459</span>
+            <p class="legal-sub">Diterbitkan melalui sistem OSS Berbasis Risiko pada tanggal 10 Februari 2023.</p>
+          </div>
+
+          <div class="legal-card glass-panel">
+            <span class="legal-badge-pill">Ditjen Pajak RI</span>
+            <h3 class="legal-title">Nomor Pokok Wajib Pajak</h3>
+            <span class="legal-val">62.735.***.*-434.***</span>
+            <p class="legal-sub">Tertib administrasi perpajakan negara atas nama PT. Harsa Digital Teknologi (Status: Aktif & Tervalidasi).</p>
+          </div>
+
+          <div class="legal-card glass-panel">
+            <span class="legal-badge-pill">Rekening Perusahaan</span>
+            <h3 class="legal-title">Bank BNI</h3>
+            <span class="legal-val">Tersedia via Invoice Resmi</span>
+            <p class="legal-sub">KCP Pasar Merdeka a.n. PT. Harsa Digital Teknologi. Detail nomor rekening dilampirkan langsung pada dokumen penawaran & invoice resmi.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- THE 4-D METHODOLOGY / METODOLOGI KERJA -->
+    <section id="metodologi" class="methodology-section section-padding">
+      <div class="container">
+        <div class="section-header text-center">
+          <div class="pill-badge glass-panel">
+            <span>METODOLOGI EKSEKUSI</span>
+          </div>
+          <h2 class="section-title">The 4-D Engineering Framework</h2>
+          <p class="section-subtitle">
+            Standar operasi baku Harsa Digitech yang memastikan setiap tahapan pengembangan berjalan transparan, tepat waktu, dan tepat sasaran.
+          </p>
+        </div>
+
+        <div class="steps-grid">
+          <div class="step-card glass-panel">
+            <div class="step-num-pill">01</div>
+            <h3 class="step-title">Discover & Audit</h3>
+            <p class="step-text">
+              Memahami kebutuhan pelanggan secara mendalam, memetakan regulasi, alur kerja instansi, dan menyusun matriks kebutuhan sistem.
+            </p>
+            <div class="step-tag">Output: Dokumen KAK & Kebutuhan Teknis</div>
+          </div>
+
+          <div class="step-card glass-panel">
+            <div class="step-num-pill">02</div>
+            <h3 class="step-title">Design Blueprint</h3>
+            <p class="step-text">
+              Perancangan antarmuka UI/UX yang intuitif, arsitektur database, dan alur integrasi API sebelum tahap pengkodean dimulai.
+            </p>
+            <div class="step-tag">Output: Prototipe UI & Desain Arsitektur</div>
+          </div>
+
+          <div class="step-card glass-panel">
+            <div class="step-num-pill">03</div>
+            <h3 class="step-title">Develop in Sprints</h3>
+            <p class="step-text">
+              Pengembangan modular dalam siklus sprint teratur disertai pengujian fungsional dan koordinasi rutin dengan pihak pemohon.
+            </p>
+            <div class="step-tag">Output: Demo Staging & Review Berkala</div>
+          </div>
+
+          <div class="step-card glass-panel">
+            <div class="step-num-pill">04</div>
+            <h3 class="step-title">Deploy & Hypercare</h3>
+            <p class="step-text">
+              Peluncuran sistem ke server produksi, pelatihan operator / admin, serah terima berkas, serta garansi pemeliharaan berkala.
+            </p>
+            <div class="step-tag">Output: Berita Acara Rilis & Dukungan Penuh</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONSULTATION & CONTACT FORM -->
+    <section id="kontak" class="contact-section section-padding">
+      <div class="container">
+        <div class="contact-card-wrapper glass-panel">
+          <div class="contact-grid">
+            <!-- Left Info Column -->
+            <div class="contact-info-col">
+              <div class="pill-badge glass-panel">
+                <span>HUBUNGI KAMI</span>
+              </div>
+              <h2 class="contact-heading">Mari Berkolaborasi Bersama Harsa Digitech</h2>
+              <p class="contact-sub">
+                Siap mendiskusikan kebutuhan sistem informasi, pengembangan website, atau modernisasi infrastruktur TI Anda? Tim kami siap membantu.
+              </p>
+
+              <div class="guarantee-box glass-panel">
+                <div class="guarantee-icon">🤝</div>
+                <div class="guarantee-text">
+                  <strong>Konsultasi & Perjanjian Kerahasiaan (NDA)</strong>
+                  <p>Seluruh dokumen dan konsep kebutuhan instansi / bisnis Anda dijamin terlindungi kerahasiaannya dengan komitmen profesional.</p>
+                </div>
+              </div>
+
+              <div class="contact-details-list">
+                <div class="contact-detail-item">
+                  <div class="detail-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                      <polyline points="22,6 12,13 2,6"></polyline>
+                    </svg>
+                  </div>
+                  <div class="detail-content">
+                    <span class="detail-label">Email Resmi Perusahaan</span>
+                    <a href="mailto:harsadigitech@gmail.com" class="detail-link">harsadigitech@gmail.com</a>
+                  </div>
+                </div>
+
+                <div class="contact-detail-item">
+                  <div class="detail-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                    </svg>
+                  </div>
+                  <div class="detail-content">
+                    <span class="detail-label">Telepon / WhatsApp</span>
+                    <a href="https://wa.me/6285889429989" target="_blank" rel="noopener" class="detail-link">+62 858 - 8942- 9989</a>
+                  </div>
+                </div>
+
+                <div class="contact-detail-item">
+                  <div class="detail-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                      <circle cx="12" cy="10" r="3"></circle>
+                    </svg>
+                  </div>
+                  <div class="detail-content">
+                    <span class="detail-label">Alamat Kantor</span>
+                    <span class="detail-text">Kec. Cibungbulang, Kab. Bogor, Jawa Barat 16630</span>
+                  </div>
+                </div>
+
+                <div class="contact-detail-item">
+                  <div class="detail-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                      <polyline points="14 2 14 8 20 8"></polyline>
+                      <line x1="16" y1="13" x2="8" y2="13"></line>
+                      <line x1="16" y1="17" x2="8" y2="17"></line>
+                    </svg>
+                  </div>
+                  <div class="detail-content">
+                    <span class="detail-label">Dokumen Resmi</span>
+                    <a href="assets/docs/Company-Profile-PT-Harsa-Digital-Teknologi.pdf" download class="detail-link text-orange">📄 Unduh Company Profile Resmi (PDF)</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Interactive Form Column -->
+            <div class="contact-form-col">
+              <form id="consultation-form" class="consult-form" novalidate>
+                <div class="form-row">
+                  <div class="form-field">
+                    <label for="contact-name" class="field-label">Nama Lengkap *</label>
+                    <input type="text" id="contact-name" name="name" class="glass-input" placeholder="contoh: Billy Rahmansyah" required>
+                    <span class="field-error" id="name-error"></span>
+                  </div>
+
+                  <div class="form-field">
+                    <label for="contact-email" class="field-label">Email Aktif *</label>
+                    <input type="email" id="contact-email" name="email" class="glass-input" placeholder="nama@instansi.go.id / perushaan.com" required>
+                    <span class="field-error" id="email-error"></span>
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-field">
+                    <label for="contact-company" class="field-label">Instansi / Perusahaan</label>
+                    <input type="text" id="contact-company" name="company" class="glass-input" placeholder="contoh: Dinas / PT / CV">
+                  </div>
+
+                  <div class="form-field">
+                    <label for="contact-phone" class="field-label">Nomor WhatsApp *</label>
+                    <input type="tel" id="contact-phone" name="phone" class="glass-input" placeholder="+62 8..." required>
+                    <span class="field-error" id="phone-error"></span>
+                  </div>
+                </div>
+
+                <div class="form-field">
+                  <label for="contact-service" class="field-label">Layanan yang Dibutuhkan</label>
+                  <select id="contact-service" name="service" class="glass-select">
+                    <option value="Konsultasi IT">Konsultasi IT & Strategi Digital</option>
+                    <option value="Software Development">Software & Application Development (Web / Mobile)</option>
+                    <option value="Website Design & Development" selected>Website Design, Development & Maintenance</option>
+                    <option value="IT Infrastructure Services">IT Infrastructure Services & Cloud Hosting</option>
+                    <option value="IT Security">IT Security & Perlindungan Data</option>
+                    <option value="Multimedia Design">Multimedia & Desain Grafis Komunikasi Visual</option>
+                  </select>
+                </div>
+
+                <div class="form-field">
+                  <label for="contact-budget" class="field-label">Estimasi Anggaran Proyek</label>
+                  <select id="contact-budget" name="budget" class="glass-select">
+                    <option value="Rp 25jt - 50jt">Rp 25jt - 50jt (Website / Modul Ringkas)</option>
+                    <option value="Rp 50jt - 100jt" selected>Rp 50jt - 100jt (Aplikasi Standar Instansi)</option>
+                    <option value="Rp 100jt - 250jt">Rp 100jt - 250jt (Sistem Terintegrasi Multi-Fungsi)</option>
+                    <option value="> Rp 250jt">&gt; Rp 250jt (Platform Skala Besar & Multi-Tahun)</option>
+                  </select>
+                </div>
+
+                <div class="form-field">
+                  <label for="contact-message" class="field-label">Deskripsi Singkat Kebutuhan Sistem *</label>
+                  <textarea id="contact-message" name="message" rows="4" class="glass-textarea" placeholder="Jelaskan kebutuhan aplikasi, portal web, atau kendala sistem yang ingin Anda selesaikan..." required></textarea>
+                  <span class="field-error" id="message-error"></span>
+                </div>
+
+                <button type="submit" class="btn btn-orange btn-block btn-lg liquid-btn" id="btn-submit-consult">
+                  <span class="btn-text">Kirim Permintaan Konsultasi</span>
+                  <svg viewBox="0 0 20 20" fill="currentColor" class="btn-icon">
+                    <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                  </svg>
+                </button>
+                <p class="form-privacy-note">
+                  🔒 Data Anda terlindungi secara ketat. Kami menghargai privasi dan kerahasiaan informasi Anda.
+                </p>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer-wrapper">
+    <div class="container footer-container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <div class="hdt-logo-wrap">
+              <img src="assets/images/hdt-logo.png" alt="Logo PT. Harsa Digital Teknologi" class="hdt-logo-img">
+            </div>
+            <div class="footer-logo-text">
+              <span class="brand-title">HARSA DIGITECH</span>
+              <span class="brand-sub">PT. HARSA DIGITAL TEKNOLOGI</span>
+            </div>
+          </div>
+          <p class="footer-tagline">
+            "Inspiring Innovation, Empowering Digital Excellence" — Menghadirkan solusi teknologi informasi inovatif, andal, dan inklusif demi kemajuan masyarakat Indonesia.
+          </p>
+          <div class="uptime-badge">
+            <span class="pulse-dot"></span>
+            <span>SK Kemenkumham: AHU-011067.AH.01.30.2023 • NIB: 1002230069459</span>
+          </div>
+        </div>
+
+        <div class="footer-links-grid">
+          <div class="footer-col">
+            <h4 class="footer-col-title">Layanan Unggulan</h4>
+            <ul>
+              <li><a href="#layanan">Konsultasi IT & Strategi</a></li>
+              <li><a href="#layanan">Software Development</a></li>
+              <li><a href="#layanan">Website Development</a></li>
+              <li><a href="#layanan">IT Infrastructure & Cloud</a></li>
+              <li><a href="#layanan">IT Security & Audit</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h4 class="footer-col-title">Perusahaan</h4>
+            <ul>
+              <li><a href="#tentang">Tentang Harsa</a></li>
+              <li><a href="#tentang">Filosofi & Nilai Inti</a></li>
+              <li><a href="#portofolio">Portofolio Klien</a></li>
+              <li><a href="#legalitas">Legalitas & Profil Usaha</a></li>
+              <li><a href="assets/docs/Company-Profile-PT-Harsa-Digital-Teknologi.pdf" download>Unduh Company Profile (PDF)</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h4 class="footer-col-title">Kantor Operasional</h4>
+            <ul>
+              <li><span style="font-size: 0.88rem; color: var(--text-muted);">Kec. Cibungbulang, Kab. Bogor, Jawa Barat 16630</span></li>
+              <li><a href="https://wa.me/6285889429989" target="_blank" rel="noopener">+62 858 - 8942- 9989</a></li>
+              <li><a href="mailto:harsadigitech@gmail.com">harsadigitech@gmail.com</a></li>
+              <li><span style="font-size: 0.88rem; color: var(--text-subtle);">Direktur: Billy Rahmansyah</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="copyright-text">
+          &copy; 2026 PT. Harsa Digital Teknologi (Harsa Digitech). Hak Cipta Dilindungi Undang-Undang.
+        </p>
+        <div class="footer-socials">
+          <a href="assets/docs/Company-Profile-PT-Harsa-Digital-Teknologi.pdf" download class="social-icon">Company Profile (PDF)</a>
+          <span class="separator">•</span>
+          <a href="#legalitas" class="social-icon">Legalitas NIB</a>
+          <span class="separator">•</span>
+          <a href="https://wa.me/6285889429989" target="_blank" rel="noopener" class="social-icon">WhatsApp Hotline</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/glass-mesh.js"></script>
+  <script src="js/estimator.js"></script>
+  <script src="js/case-study.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

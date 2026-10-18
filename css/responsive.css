@@ -1,0 +1,258 @@
+/* ==========================================================================
+   HARSA DIGITECH (PT. HARSA DIGITAL TEKNOLOGI) - RESPONSIVE STYLES
+   Mobile, Tablet, and Desktop Breakpoints
+   ========================================================================== */
+
+/* Mobile Drawer Defaults */
+.mobile-drawer {
+  position: fixed;
+  top: 5.5rem;
+  left: 1.5rem;
+  right: 1.5rem;
+  padding: 1.75rem;
+  border-radius: var(--radius-xl);
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-15px);
+  transition: all var(--transition-normal);
+  z-index: 99;
+}
+
+.mobile-drawer.active {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.mobile-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.mobile-nav-link {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text-main);
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--glass-border-subtle);
+}
+
+.mobile-cta-link {
+  color: var(--brand-blue);
+  border-bottom: none;
+  margin-top: 0.5rem;
+}
+
+/* ==========================================================================
+   TABLET BREAKPOINTS (<= 1024px)
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .hero-container {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .hero-content {
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .hero-title {
+    font-size: 3rem;
+  }
+
+  .hero-description {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-actions {
+    justify-content: center;
+  }
+
+  .hero-stats-row {
+    margin: 0 auto;
+  }
+
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .portfolio-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .steps-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .estimator-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .result-glass-card {
+    position: static;
+  }
+
+  .testimonial-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .footer-top {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+}
+
+/* ==========================================================================
+   MOBILE BREAKPOINTS (<= 768px)
+   ========================================================================== */
+@media (max-width: 768px) {
+  /* Hide Desktop Nav, show mobile toggle */
+  #desktop-nav {
+    display: none;
+  }
+
+  .status-badge {
+    display: none;
+  }
+
+  #nav-cta-btn {
+    display: none;
+  }
+
+  .mobile-toggle {
+    display: flex;
+  }
+
+  .mobile-toggle.active .bar:nth-child(1) {
+    transform: translateY(10px) rotate(45deg);
+  }
+
+  .mobile-toggle.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  .mobile-toggle.active .bar:nth-child(3) {
+    transform: translateY(-10px) rotate(-45deg);
+  }
+
+  /* Section Padding */
+  .section-padding {
+    padding: 4.5rem 0;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .hero-title {
+    font-size: 2.2rem;
+  }
+
+  .hero-description {
+    font-size: 1rem;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+  }
+
+  .hero-stats-row {
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: space-around;
+  }
+
+  .stat-divider {
+    display: none;
+  }
+
+  /* Floating badges on mobile hero */
+  .floating-glass-badge {
+    position: static;
+    margin-top: 0.75rem;
+  }
+
+  .badge-top-left, .badge-bottom-right {
+    position: static;
+    animation: none;
+  }
+
+  /* Grids to single column */
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .portfolio-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .steps-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tech-category-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .testimonial-cards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .consult-form .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .radio-card-group {
+    grid-template-columns: 1fr;
+  }
+
+  .estimator-wrapper {
+    padding: 1.5rem;
+  }
+
+  .contact-card-wrapper {
+    padding: 1.75rem;
+  }
+
+  .footer-links-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+
+  .modal-dialog {
+    padding: 1.5rem;
+  }
+
+  .toast-container {
+    left: 1rem;
+    right: 1rem;
+    bottom: 1rem;
+  }
+
+  .toast {
+    min-width: auto;
+    width: 100%;
+  }
+}
