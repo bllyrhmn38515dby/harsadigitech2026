@@ -7,6 +7,13 @@
   'use strict';
 
   // ==========================================================================
+  // KONFIGURASI GOOGLE APPS SCRIPT
+  // Paste URL deployment Apps Script Anda di sini setelah setup.
+  // Panduan lengkap: lihat file SETUP-APPS-SCRIPT.js
+  // ==========================================================================
+  const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwfTOGlf8WTtA8U79b_gMqvrQAqSbNDCEoAEux7qoy3gpnbEnPQ4OeAj2ZPRzlye1wE/exec';
+
+  // ==========================================================================
   // 1. TOAST NOTIFICATION UTILITY
   // ==========================================================================
   window.showToast = function (message, type = 'success') {
@@ -248,7 +255,20 @@
 
       if (!isValid) return;
 
-      // Simulate loading state on button
+      // Kumpulkan data form
+      const serviceSelect = document.getElementById('contact-service');
+      const budgetSelect = document.getElementById('contact-budget');
+
+      const formData = {
+        name: nameInput.value.trim(),
+        email: emailInput.value.trim(),
+        phone: phoneInput.value.trim(),
+        service: serviceSelect ? serviceSelect.value : '-',
+        budget: budgetSelect ? budgetSelect.value : '-',
+        message: messageInput.value.trim()
+      };
+
+      // Loading state
       const originalBtnHtml = submitBtn.innerHTML;
       submitBtn.disabled = true;
       submitBtn.innerHTML = `
@@ -256,15 +276,38 @@
         <span class="spinner-dot">⏳</span>
       `;
 
-      setTimeout(() => {
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = originalBtnHtml;
+      // Cek apakah URL Apps Script sudah dikonfigurasi
+      if (!APPS_SCRIPT_URL || APPS_SCRIPT_URL === 'PASTE_URL_APPS_SCRIPT_ANDA_DI_SINI') {
+        // Fallback: simulasi sukses (belum dikonfigurasi)
+        setTimeout(() => {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalBtnHtml;
+          consultForm.reset();
+          window.showToast('⚠️ [Dev Mode] Form belum terhubung ke server. Lihat SETUP-APPS-SCRIPT.js untuk konfigurasi.');
+        }, 800);
+        return;
+      }
 
-        // Reset form
-        consultForm.reset();
-
-        window.showToast('✓ Permintaan Anda terkirim! Tim PT Harsa Digital Teknologi akan menghubungi dalam < 2 jam.');
-      }, 1200);
+      // Kirim data ke Google Apps Script
+      fetch(APPS_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors', // Google Apps Script tidak support CORS penuh
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      })
+        .then(() => {
+          // no-cors: response selalu "opaque", anggap sukses jika tidak throw
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalBtnHtml;
+          consultForm.reset();
+          window.showToast('✓ Permintaan Anda terkirim! Tim PT Harsa Digital Teknologi akan menghubungi dalam < 2 jam.');
+        })
+        .catch((err) => {
+          console.error('Form submission error:', err);
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalBtnHtml;
+          window.showToast('❌ Gagal mengirim. Silakan hubungi kami langsung via WhatsApp atau email.', 'error');
+        });
     });
   }
 })();
