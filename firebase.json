@@ -6,7 +6,8 @@
       ".firebaserc",
       "**/.*",
       "README.md",
-      "DEPLOY-GUIDE.md"
+      "DEPLOY-GUIDE.md",
+      "assets/docs/Company-Profile-PT-Harsa-Digital-Teknologi.pdf"
     ],
     "rewrites": [],
     "headers": [

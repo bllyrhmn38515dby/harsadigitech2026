@@ -7,7 +7,6 @@
   const form = document.getElementById('project-calculator-form');
   if (!form) return;
 
-  const budgetDisplay = document.getElementById('calc-budget-display');
   const durationDisplay = document.getElementById('calc-duration-display');
   const sprintsDisplay = document.getElementById('calc-sprints-display');
   const squadDisplay = document.getElementById('calc-squad-display');
@@ -16,43 +15,29 @@
   // Multiplier matrix
   const TYPE_CONFIGS = {
     mvp: {
-      baseBudgetMin: 35,
-      baseBudgetMax: 65,
       weeks: 6,
       sprints: 3,
       squad: ['1 Project Lead', '1 Senior Software Engineer', '1 UI/UX & Web Specialist'],
       serviceKey: 'Website Design & Development'
     },
     enterprise: {
-      baseBudgetMin: 80,
-      baseBudgetMax: 175,
       weeks: 12,
       sprints: 6,
       squad: ['1 Senior Systems Architect', '2 Backend Engineers', '1 Frontend Developer', '1 QA & Security Lead'],
       serviceKey: 'Software Development'
     },
     modernization: {
-      baseBudgetMin: 50,
-      baseBudgetMax: 110,
       weeks: 8,
       sprints: 4,
       squad: ['1 Cloud / Server Specialist', '1 Database Engineer', '1 DevOps Engineer'],
       serviceKey: 'IT Infrastructure Services'
     },
     squad: {
-      baseBudgetMin: 45,
-      baseBudgetMax: 90,
       weeks: 8,
       sprints: 4,
       squad: ['1 Dedicated IT Consultant', '2 Fullstack Developers', '1 Maintenance Specialist'],
       serviceKey: 'Konsultasi IT'
     }
-  };
-
-  const COMPLEXITY_MULTIPLIERS = {
-    standard: 1.0,
-    high: 1.35,
-    'mission-critical': 1.8
   };
 
   function calculate() {
@@ -64,23 +49,13 @@
     // 2. Count selected platforms
     const selectedPlatforms = Array.from(form.querySelectorAll('input[name="platform"]:checked')).map(el => el.value);
     const platformCount = selectedPlatforms.length;
-    const platformMultiplier = 1 + (platformCount - 1) * 0.22; // Each additional platform adds ~22%
-
     // 3. Complexity
     const complexityEl = document.getElementById('calc-complexity');
     const complexityVal = complexityEl ? complexityEl.value : 'high';
-    const complexityMultiplier = COMPLEXITY_MULTIPLIERS[complexityVal] || 1.35;
-
-    // Total calculation
-    const totalMultiplier = platformMultiplier * complexityMultiplier;
-    const minBudget = Math.round(baseConfig.baseBudgetMin * totalMultiplier);
-    const maxBudget = Math.round(baseConfig.baseBudgetMax * totalMultiplier);
 
     const adjustedWeeks = Math.max(4, Math.round(baseConfig.weeks * (1 + (platformCount - 1) * 0.15)));
     const adjustedSprints = Math.ceil(adjustedWeeks / 2);
 
-    // Format Rupiah
-    budgetDisplay.textContent = `Rp ${minBudget}jt - ${maxBudget}jt`;
     durationDisplay.textContent = `${adjustedWeeks - 1} - ${adjustedWeeks + 2} Minggu`;
     sprintsDisplay.textContent = `${adjustedSprints} - ${adjustedSprints + 1} Sprints (2-week cycle)`;
 
@@ -101,8 +76,6 @@
       projectType,
       selectedPlatforms,
       complexityVal,
-      minBudget,
-      maxBudget,
       adjustedWeeks,
       finalSquad,
       serviceKey: baseConfig.serviceKey
@@ -151,7 +124,6 @@
       
       // Target Form fields
       const serviceSelect = document.getElementById('contact-service');
-      const budgetSelect = document.getElementById('contact-budget');
       const messageTextarea = document.getElementById('contact-message');
 
       if (serviceSelect) {
@@ -164,20 +136,8 @@
         }
       }
 
-      if (budgetSelect) {
-        if (data.maxBudget <= 100) {
-          budgetSelect.value = 'Rp 50jt - 100jt';
-        } else if (data.maxBudget <= 250) {
-          budgetSelect.value = 'Rp 100jt - 250jt';
-        } else if (data.maxBudget <= 500) {
-          budgetSelect.value = 'Rp 250jt - 500jt';
-        } else {
-          budgetSelect.value = '> Rp 500jt';
-        }
-      }
-
       if (messageTextarea) {
-        messageTextarea.value = `[Hasil Kalkulator Estimasi Proyek]\n- Tipe Proyek: ${data.projectType.toUpperCase()}\n- Platform: ${data.selectedPlatforms.join(', ')}\n- Kompleksitas: ${data.complexityVal}\n- Estimasi Durasi: ${data.adjustedWeeks} Minggu\n- Estimasi Anggaran: Rp ${data.minBudget}jt - ${data.maxBudget}jt\n\nCatatan Tambahan Mengenai Sistem Kami:\n`;
+        messageTextarea.value = `[Pengajuan Analisis Proyek]\n- Tipe Proyek: ${data.projectType.toUpperCase()}\n- Platform: ${data.selectedPlatforms.join(', ')}\n- Kompleksitas: ${data.complexityVal}\n- Perkiraan Durasi Awal: ${data.adjustedWeeks} Minggu\n- Rekomendasi Tim: ${data.finalSquad.join(', ')}\n\nKebutuhan atau catatan tambahan:\n`;
       }
 
       // Smooth scroll to contact section
@@ -188,7 +148,7 @@
 
       // Trigger notification toast
       if (window.showToast) {
-        window.showToast('✓ Konfigurasi proyek berhasil dipasang pada formulir konsultasi!');
+        window.showToast('Ringkasan kebutuhan proyek ditambahkan ke formulir konsultasi.');
       }
     });
   }

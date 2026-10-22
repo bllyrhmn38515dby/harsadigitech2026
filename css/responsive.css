@@ -46,6 +46,41 @@
   margin-top: 0.5rem;
 }
 
+/* ========================================================================
+  NAVIGATION BREAKPOINTS
+   ========================================================================== */
+@media (max-width: 1121px) {
+  .status-badge {
+    display: none;
+  }
+}
+
+@media (max-width: 961px) {
+  #desktop-nav {
+    display: none;
+  }
+
+  #nav-cta-btn {
+    display: none;
+  }
+
+  .mobile-toggle {
+    display: flex;
+  }
+
+  .mobile-toggle.active .bar:nth-child(1) {
+    transform: translateY(10px) rotate(45deg);
+  }
+
+  .mobile-toggle.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  .mobile-toggle.active .bar:nth-child(3) {
+    transform: translateY(-10px) rotate(-45deg);
+  }
+}
+
 /* ==========================================================================
    TABLET BREAKPOINTS (<= 1024px)
    ========================================================================== */
@@ -90,12 +125,25 @@
   }
 
   .estimator-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: 2.5rem;
+  }
+
+  .estimator-grid > *,
+  .legal-card {
+    min-width: 0;
   }
 
   .result-glass-card {
     position: static;
+  }
+
+  .legal-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .values-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .testimonial-cards-grid {
@@ -112,42 +160,13 @@
    MOBILE BREAKPOINTS (<= 768px)
    ========================================================================== */
 @media (max-width: 768px) {
-  /* Hide Desktop Nav, show mobile toggle */
-  #desktop-nav {
-    display: none;
-  }
-
-  .status-badge {
-    display: none;
-  }
-
-  #nav-cta-btn {
-    display: none;
-  }
-
-  .mobile-toggle {
-    display: flex;
-  }
-
-  .mobile-toggle.active .bar:nth-child(1) {
-    transform: translateY(10px) rotate(45deg);
-  }
-
-  .mobile-toggle.active .bar:nth-child(2) {
-    opacity: 0;
-  }
-
-  .mobile-toggle.active .bar:nth-child(3) {
-    transform: translateY(-10px) rotate(-45deg);
-  }
-
   /* Section Padding */
   .section-padding {
-    padding: 4.5rem 0;
+    padding: 3.25rem 0;
   }
 
   .section-title {
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
 
   .hero-title {
@@ -197,6 +216,18 @@
     grid-template-columns: 1fr;
   }
 
+  .portfolio-tabs-container {
+    width: 100%;
+  }
+
+  .portfolio-tabs {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+    border-radius: var(--radius-lg);
+  }
+
   .steps-grid {
     grid-template-columns: 1fr;
   }
@@ -220,6 +251,11 @@
 
   .radio-card-group {
     grid-template-columns: 1fr;
+  }
+
+  .check-tag {
+    max-width: 100%;
+    white-space: normal;
   }
 
   .estimator-wrapper {
@@ -254,5 +290,40 @@
   .toast {
     min-width: auto;
     width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .legal-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .values-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .navbar-wrapper {
+    padding: 0 0.75rem;
+  }
+
+  .navbar-container {
+    padding: 0.6rem 0.85rem;
+  }
+
+  .brand-title {
+    font-size: 1rem;
+  }
+
+  .brand-logo {
+    gap: 0.55rem;
+  }
+
+  .contact-card-wrapper {
+    padding: 1.25rem;
+  }
+
+  .detail-link,
+  .detail-text {
+    overflow-wrap: anywhere;
   }
 }

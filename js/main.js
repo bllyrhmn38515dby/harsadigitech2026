@@ -88,11 +88,46 @@
     });
   }
 
+  document.querySelectorAll('.company-profile-request').forEach(link => {
+    link.addEventListener('click', () => {
+      const messageInput = document.getElementById('contact-message');
+      if (!messageInput) return;
+
+      const request = 'Saya ingin meminta Company Profile PT. Harsa Digital Teknologi.';
+      if (!messageInput.value.includes(request)) {
+        messageInput.value = messageInput.value.trim()
+          ? `${messageInput.value.trim()}\n\n${request}`
+          : request;
+      }
+    });
+  });
+
   // ==========================================================================
   // 4. ACTIVE SCROLL SPY FOR NAVIGATION
   // ==========================================================================
   const sections = document.querySelectorAll('section[id]');
   const navLinks = document.querySelectorAll('.nav-link');
+  const navDropdown = document.querySelector('.nav-dropdown');
+  const navDropdownTrigger = navDropdown ? navDropdown.querySelector('summary') : null;
+
+  if (navDropdown) {
+    navDropdown.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navDropdown.open = false;
+      });
+    });
+
+    document.addEventListener('click', (event) => {
+      if (!navDropdown.contains(event.target)) navDropdown.open = false;
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && navDropdown.open) {
+        navDropdown.open = false;
+        navDropdownTrigger.focus();
+      }
+    });
+  }
 
   function scrollSpy() {
     const scrollY = window.pageYOffset;
@@ -309,5 +344,9 @@
           window.showToast('❌ Gagal mengirim. Silakan hubungi kami langsung via WhatsApp atau email.', 'error');
         });
     });
+
+      if (navDropdownTrigger) {
+        navDropdownTrigger.classList.toggle('active', Boolean(navDropdown.querySelector('.nav-dropdown-link.active')));
+      }
   }
 })();

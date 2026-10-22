@@ -24,8 +24,8 @@
   
   --brand-blue: var(--hdt-blue-light);
   --brand-orange: var(--hdt-orange);
-  --brand-gradient: linear-gradient(135deg, #1e3a8a 0%, #2563eb 55%, #f25822 100%);
-  --brand-gradient-hover: linear-gradient(135deg, #172554 0%, #1d4ed8 55%, #d94514 100%);
+  --brand-gradient: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+  --brand-gradient-hover: linear-gradient(135deg, #172554 0%, #1d4ed8 100%);
   --brand-orange-grad: linear-gradient(135deg, #f25822 0%, #ff7a45 100%);
 
   /* Liquid Glass Tokens */
@@ -33,7 +33,7 @@
   --glass-border: rgba(255, 255, 255, 0.9);
   --glass-border-subtle: rgba(226, 232, 240, 0.85);
   --glass-shadow: 0 20px 45px -15px rgba(15, 23, 42, 0.08), 0 0 0 1px rgba(226, 232, 240, 0.6);
-  --glass-shadow-hover: 0 30px 60px -15px rgba(37, 99, 235, 0.15), 0 0 0 1px rgba(242, 88, 34, 0.35);
+  --glass-shadow-hover: 0 30px 60px -15px rgba(37, 99, 235, 0.12), 0 0 0 1px rgba(242, 88, 34, 0.18);
   --glass-blur: blur(20px) saturate(180%);
   --glass-specular: inset 0 1px 1px 0 rgba(255, 255, 255, 0.95);
 
@@ -157,7 +157,7 @@ img {
 }
 
 .section-padding {
-  padding: 6.5rem 0;
+  padding: 5rem 0;
 }
 
 .text-center {
@@ -179,17 +179,17 @@ img {
 /* Section Header standard */
 .section-header {
   max-width: 780px;
-  margin: 0 auto 3.5rem auto;
+  margin: 0 auto 2.5rem auto;
 }
 
 .section-title {
-  font-size: 2.5rem;
+  font-size: 2.3rem;
   font-weight: 700;
   margin: 1rem 0 1rem;
 }
 
 .section-subtitle {
-  font-size: 1.125rem;
+  font-size: 1.05rem;
   line-height: 1.7;
 }
 
@@ -408,6 +408,73 @@ img {
 
 .nav-link:hover::after, .nav-link.active::after {
   width: 100%;
+}
+
+.nav-dropdown {
+  position: relative;
+}
+
+.nav-dropdown-trigger {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  list-style: none;
+  cursor: pointer;
+}
+
+.nav-dropdown-trigger::-webkit-details-marker {
+  display: none;
+}
+
+.nav-dropdown-chevron {
+  width: 7px;
+  height: 7px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: translateY(-2px) rotate(45deg);
+  transition: transform var(--transition-fast);
+}
+
+.nav-dropdown[open] .nav-dropdown-chevron {
+  transform: translateY(2px) rotate(225deg);
+}
+
+.nav-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 0.8rem);
+  right: 0;
+  z-index: 110;
+  display: flex;
+  flex-direction: column;
+  min-width: 190px;
+  padding: 0.45rem;
+  border: 1px solid var(--glass-border-subtle);
+  border-radius: var(--radius-md);
+  background: var(--bg-card);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  box-shadow: var(--glass-shadow);
+}
+
+.nav-dropdown-link {
+  display: block;
+  padding: 0.65rem 0.75rem;
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+}
+
+.nav-dropdown-link::after {
+  display: none;
+}
+
+.nav-dropdown-link:hover {
+  background: rgba(37, 99, 235, 0.08);
+}
+
+.nav-dropdown-trigger:focus-visible,
+.nav-dropdown-link:focus-visible {
+  outline: 2px solid var(--brand-blue);
+  outline-offset: 3px;
 }
 
 .nav-actions {
@@ -1031,7 +1098,7 @@ img {
    INTERACTIVE ESTIMATOR WIDGET
    ========================================================================== */
 .estimator-wrapper {
-  padding: 3rem;
+  padding: 2.25rem;
   border-radius: var(--radius-xl);
 }
 
@@ -1230,6 +1297,12 @@ img {
   -webkit-text-fill-color: transparent;
   line-height: 1.15;
   margin-bottom: 0.35rem;
+}
+
+.analysis-note {
+  max-width: 24rem;
+  font-size: 1.35rem;
+  line-height: 1.3;
 }
 
 .calc-subtext {
