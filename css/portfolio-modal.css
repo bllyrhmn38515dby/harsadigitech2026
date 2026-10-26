@@ -273,7 +273,7 @@
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--hdt-orange);
+  color: var(--hdt-orange-text);
   margin-bottom: 0.5rem;
   display: block;
 }
@@ -408,12 +408,18 @@
 
 .pm-screenshot-wrap {
   position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
   border-radius: var(--radius-lg);
   overflow: hidden;
   background: var(--bg-secondary);
   border: 1px solid var(--glass-border-subtle);
   cursor: zoom-in;
   aspect-ratio: 16/9;
+  color: inherit;
+  font: inherit;
+  text-align: left;
 }
 
 .pm-screenshot-wrap img {
@@ -611,7 +617,7 @@
   font-weight: 700;
   letter-spacing: 0.07em;
   text-transform: uppercase;
-  color: var(--hdt-orange);
+  color: var(--hdt-orange-text);
   margin-bottom: 0.25rem;
 }
 
@@ -646,7 +652,7 @@
   top: -0.5rem; left: 1rem;
   font-family: Georgia, serif;
   font-size: 6rem;
-  color: var(--hdt-orange);
+  color: var(--hdt-orange-text);
   opacity: 0.15;
   line-height: 1;
   pointer-events: none;
@@ -664,7 +670,7 @@
 .pm-quote-attribution {
   font-size: 0.85rem;
   font-weight: 700;
-  color: var(--hdt-orange);
+  color: var(--hdt-orange-text);
 }
 
 /* ─── CTA Footer ──────────────────────────────────────────────── */

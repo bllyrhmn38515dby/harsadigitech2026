@@ -55,12 +55,25 @@
     }
   </script>
 
-  <!-- Google Fonts: Plus Jakarta Sans & Outfit & JetBrains Mono -->
+  <!-- Google Fonts: Plus Jakarta Sans & Outfit -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
-    rel="stylesheet">
+    rel="preload"
+    as="image"
+    href="assets/images/hero-dashboard-960.jpg"
+    imagesrcset="assets/images/hero-dashboard-640.jpg 640w, assets/images/hero-dashboard-960.jpg 960w"
+    imagesizes="(max-width: 768px) calc(100vw - 3rem), 50vw">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@400..800&family=Plus+Jakarta+Sans:wght@300..800&display=swap"
+    rel="stylesheet"
+    media="print"
+    onload="this.media='all'">
+  <noscript>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400..800&family=Plus+Jakarta+Sans:wght@300..800&display=swap"
+      rel="stylesheet">
+  </noscript>
 
   <!-- Stylesheets -->
   <link rel="stylesheet" href="css/index.css">
@@ -75,13 +88,15 @@
   <canvas id="liquid-canvas" aria-hidden="true"></canvas>
 
   <!-- Notification Toast Container -->
-  <div id="toast-container" class="toast-container" aria-live="polite"></div>
+  <div id="toast-container" class="toast-container" aria-live="polite" aria-atomic="true"></div>
+
+  <a class="skip-link" href="#main-content">Langsung ke konten utama</a>
 
   <!-- Header / Navigation Bar -->
   <header class="navbar-wrapper">
     <div class="navbar-container glass-panel">
       <!-- Brand Logo -->
-      <a href="#hero" class="brand-logo" id="nav-brand-logo" aria-label="Harsa Digitech Home">
+      <a href="#hero" class="brand-logo" id="nav-brand-logo" aria-label="Beranda Harsa Digitech">
         <div class="hdt-logo-wrap">
           <img src="assets/images/hdt-logo.png" alt="Logo PT. Harsa Digital Teknologi" class="hdt-logo-img">
         </div>
@@ -91,7 +106,7 @@
       </a>
 
       <!-- Desktop Navigation Menu -->
-      <nav class="nav-menu" id="desktop-nav" aria-label="Main Navigation">
+      <nav class="nav-menu" id="desktop-nav" aria-label="Navigasi utama">
         <a href="#tentang" class="nav-link" id="nav-link-about">Tentang</a>
         <a href="#layanan" class="nav-link" id="nav-link-services">Layanan</a>
         <a href="#portofolio" class="nav-link" id="nav-link-portfolio">Portofolio</a>
@@ -145,7 +160,8 @@
         </a>
 
         <!-- Mobile Menu Toggle Button -->
-        <button id="mobile-menu-btn" class="mobile-toggle" aria-label="Buka Menu Navigasi" aria-expanded="false">
+        <button id="mobile-menu-btn" class="mobile-toggle" type="button" aria-label="Buka menu navigasi"
+          aria-controls="mobile-drawer" aria-expanded="false">
           <span class="bar"></span>
           <span class="bar"></span>
           <span class="bar"></span>
@@ -154,8 +170,8 @@
     </div>
 
     <!-- Mobile Drawer Navigation -->
-    <div id="mobile-drawer" class="mobile-drawer glass-panel" aria-hidden="true">
-      <nav class="mobile-nav">
+    <div id="mobile-drawer" class="mobile-drawer glass-panel" aria-hidden="true" inert>
+      <nav class="mobile-nav" aria-label="Navigasi seluler">
         <a href="#tentang" class="mobile-nav-link">Tentang Harsa</a>
         <a href="#layanan" class="mobile-nav-link">Layanan Konsultasi & IT</a>
         <a href="#portofolio" class="mobile-nav-link">Portofolio Klien</a>
@@ -168,7 +184,7 @@
     </div>
   </header>
 
-  <main>
+  <main id="main-content" tabindex="-1">
     <!-- HERO SECTION -->
     <section id="hero" class="hero-section">
       <div class="hero-container container">
@@ -240,7 +256,7 @@
         </div>
 
         <!-- Interactive Hero Showcase Card (Liquid Glass with 3D Image & Live Badges) -->
-        <div class="hero-visual animate-fade-in delay-2">
+        <div class="hero-visual">
           <div class="visual-card-wrapper" id="hero-tilt-card">
             <div class="liquid-glass-card hero-preview-card">
               <!-- Top bar simulating app window -->
@@ -258,8 +274,16 @@
 
               <!-- Main Visual Image Generated -->
               <div class="hero-image-container">
-                <img src="assets/images/hero-dashboard.jpg"
-                  alt="Harsa Digitech Enterprise Software Architecture Dashboard" class="hero-img" loading="eager">
+                <img
+                  src="assets/images/hero-dashboard-960.jpg"
+                  srcset="assets/images/hero-dashboard-640.jpg 640w, assets/images/hero-dashboard-960.jpg 960w"
+                  sizes="(max-width: 768px) calc(100vw - 3rem), 50vw"
+                  width="960"
+                  height="536"
+                  alt="Harsa Digitech Enterprise Software Architecture Dashboard"
+                  class="hero-img"
+                  fetchpriority="high"
+                  decoding="async">
                 <div class="image-liquid-overlay"></div>
               </div>
 
@@ -569,14 +593,14 @@
 
         <!-- Filter Tabs -->
         <div class="portfolio-tabs-container">
-          <div class="portfolio-tabs glass-panel" role="tablist">
-            <button class="portfolio-tab-btn active" data-filter="all" role="tab" aria-selected="true">Semua
+          <div class="portfolio-tabs glass-panel" role="group" aria-label="Filter portofolio">
+            <button class="portfolio-tab-btn active" type="button" data-filter="all" aria-pressed="true">Semua
               Proyek</button>
-            <button class="portfolio-tab-btn" data-filter="pemerintah" role="tab" aria-selected="false">Pemerintahan
+            <button class="portfolio-tab-btn" type="button" data-filter="pemerintah" aria-pressed="false">Pemerintahan
               (E-Gov)</button>
-            <button class="portfolio-tab-btn" data-filter="layanan" role="tab" aria-selected="false">Layanan Publik &
+            <button class="portfolio-tab-btn" type="button" data-filter="layanan" aria-pressed="false">Layanan Publik &
               UMKM</button>
-            <button class="portfolio-tab-btn" data-filter="swasta" role="tab" aria-selected="false">Korporat /
+            <button class="portfolio-tab-btn" type="button" data-filter="swasta" aria-pressed="false">Korporat /
               Swasta</button>
           </div>
         </div>
@@ -829,16 +853,17 @@
               <div class="pill-badge glass-panel">
                 <span>PROJECT BRIEF</span>
               </div>
-              <h2 class="estimator-title">Ajukan Analisis Kebutuhan Proyek</h2>
+              <h2 class="estimator-title" id="estimator-title">Ajukan Analisis Kebutuhan Proyek</h2>
               <p class="estimator-desc">
                 Ceritakan gambaran awal sistem yang dibutuhkan. Tim kami akan meninjau ruang lingkup dan menyusun
                 estimasi biaya setelah berdiskusi dengan Anda.
               </p>
 
-              <form id="project-calculator-form" class="calc-form" onsubmit="return false;">
+              <form id="project-calculator-form" class="calc-form" aria-labelledby="estimator-title"
+                onsubmit="return false;">
                 <!-- Step 1: Project Type -->
-                <div class="form-group">
-                  <label class="group-label">1. Tipe Inisiatif Proyek</label>
+                <fieldset class="form-group">
+                  <legend class="group-label">1. Tipe Inisiatif Proyek</legend>
                   <div class="radio-card-group" id="project-type-group">
                     <label class="radio-card active">
                       <input type="radio" name="project_type" value="mvp" checked>
@@ -860,12 +885,11 @@
                       <span class="radio-title">Dedicated Tim IT</span>
                       <span class="radio-sub">Tim engineering & maintenance berkala</span>
                     </label>
-                  </div>
-                </div>
+                  </fieldset>
 
                 <!-- Step 2: Target Scope Platforms -->
-                <div class="form-group">
-                  <label class="group-label">2. Lingkup Platform (Bisa pilih lebih dari satu)</label>
+                <fieldset class="form-group">
+                  <legend class="group-label">2. Lingkup Platform (Bisa pilih lebih dari satu)</legend>
                   <div class="checkbox-tag-group">
                     <label class="check-tag active">
                       <input type="checkbox" name="platform" value="web" checked>
@@ -883,12 +907,11 @@
                       <input type="checkbox" name="platform" value="ai">
                       <span>Keamanan & Sertifikat Digital (QR)</span>
                     </label>
-                  </div>
-                </div>
+                  </fieldset>
 
                 <!-- Step 3: Architecture & Security Complexity -->
                 <div class="form-group">
-                  <label class="group-label">3. Standar Keamanan & Reliabilitas</label>
+                  <label class="group-label" for="calc-complexity">3. Standar Keamanan & Reliabilitas</label>
                   <select id="calc-complexity" class="glass-select">
                     <option value="standard">Standard Kepatuhan (SSL Enkripsi, Role-Based Access, Backup Rutin)</option>
                     <option value="high" selected>Enterprise Grade (High Availability, Audit Trail, OWASP Protection)
@@ -1087,16 +1110,16 @@
         </div>
 
         <!-- Category Filter Tabs -->
-        <div class="faq-tabs" role="tablist" aria-label="Kategori FAQ">
-          <button class="faq-tab active" data-faq-cat="all" role="tab" aria-selected="true"
+        <div class="faq-tabs" role="group" aria-label="Filter kategori FAQ">
+          <button class="faq-tab active" type="button" data-faq-cat="all" aria-pressed="true"
             id="faq-tab-all">Semua</button>
-          <button class="faq-tab" data-faq-cat="proyek" role="tab" aria-selected="false" id="faq-tab-proyek">Proyek &
+          <button class="faq-tab" type="button" data-faq-cat="proyek" aria-pressed="false" id="faq-tab-proyek">Proyek &
             Proses</button>
-          <button class="faq-tab" data-faq-cat="harga" role="tab" aria-selected="false" id="faq-tab-harga">Harga &
+          <button class="faq-tab" type="button" data-faq-cat="harga" aria-pressed="false" id="faq-tab-harga">Harga &
             Kontrak</button>
-          <button class="faq-tab" data-faq-cat="teknis" role="tab" aria-selected="false" id="faq-tab-teknis">Teknis &
+          <button class="faq-tab" type="button" data-faq-cat="teknis" aria-pressed="false" id="faq-tab-teknis">Teknis &
             Teknologi</button>
-          <button class="faq-tab" data-faq-cat="purna" role="tab" aria-selected="false" id="faq-tab-purna">Purna Jual &
+          <button class="faq-tab" type="button" data-faq-cat="purna" aria-pressed="false" id="faq-tab-purna">Purna Jual &
             Support</button>
         </div>
 
@@ -1452,7 +1475,7 @@
               <div class="pill-badge glass-panel">
                 <span>HUBUNGI KAMI</span>
               </div>
-              <h2 class="contact-heading">Mari Berkolaborasi Bersama Harsa Digitech</h2>
+              <h2 class="contact-heading" id="contact-heading">Mari Berkolaborasi Bersama Harsa Digitech</h2>
               <p class="contact-sub">
                 Siap mendiskusikan kebutuhan sistem informasi, pengembangan website, atau modernisasi infrastruktur TI
                 Anda? Tim kami siap membantu.
@@ -1528,20 +1551,21 @@
 
             <!-- Right Interactive Form Column -->
             <div class="contact-form-col">
-              <form id="consultation-form" class="consult-form" novalidate>
+              <form id="consultation-form" class="consult-form" aria-labelledby="contact-heading" novalidate>
                 <div class="form-row">
                   <div class="form-field">
                     <label for="contact-name" class="field-label">Nama Lengkap *</label>
                     <input type="text" id="contact-name" name="name" class="glass-input"
-                      placeholder="contoh: Billy Rahmansyah" required>
-                    <span class="field-error" id="name-error"></span>
+                      placeholder="contoh: Billy Rahmansyah" autocomplete="name" aria-describedby="name-error" required>
+                    <span class="field-error" id="name-error" aria-live="polite"></span>
                   </div>
 
                   <div class="form-field">
                     <label for="contact-email" class="field-label">Email Aktif *</label>
                     <input type="email" id="contact-email" name="email" class="glass-input"
-                      placeholder="nama@instansi.go.id / perushaan.com" required>
-                    <span class="field-error" id="email-error"></span>
+                      placeholder="nama@instansi.go.id / perushaan.com" autocomplete="email"
+                      aria-describedby="email-error" required>
+                    <span class="field-error" id="email-error" aria-live="polite"></span>
                   </div>
                 </div>
 
@@ -1549,14 +1573,14 @@
                   <div class="form-field">
                     <label for="contact-company" class="field-label">Instansi / Perusahaan</label>
                     <input type="text" id="contact-company" name="company" class="glass-input"
-                      placeholder="contoh: Dinas / PT / CV">
+                      placeholder="contoh: Dinas / PT / CV" autocomplete="organization">
                   </div>
 
                   <div class="form-field">
                     <label for="contact-phone" class="field-label">Nomor WhatsApp *</label>
                     <input type="tel" id="contact-phone" name="phone" class="glass-input" placeholder="+62 8..."
-                      required>
-                    <span class="field-error" id="phone-error"></span>
+                      autocomplete="tel" inputmode="tel" aria-describedby="phone-error" required>
+                    <span class="field-error" id="phone-error" aria-live="polite"></span>
                   </div>
                 </div>
 
@@ -1584,7 +1608,7 @@
                   <textarea id="contact-message" name="message" rows="4" class="glass-textarea"
                     placeholder="Jelaskan kebutuhan aplikasi, portal web, atau kendala sistem yang ingin Anda selesaikan..."
                     required></textarea>
-                  <span class="field-error" id="message-error"></span>
+                  <span class="field-error" id="message-error" aria-live="polite"></span>
                 </div>
 
                 <button type="submit" class="btn btn-orange btn-block btn-lg liquid-btn" id="btn-submit-consult">
@@ -1624,10 +1648,7 @@
             "Inspiring Innovation, Empowering Digital Excellence" — Menghadirkan solusi teknologi informasi inovatif,
             andal, dan inklusif demi kemajuan masyarakat Indonesia.
           </p>
-          <div class="uptime-badge">
-            <span class="pulse-dot"></span>
-            <span>SK Kemenkumham: AHU-011067.AH.01.30.2023 • NIB: 1002230069459</span>
-          </div>
+          
         </div>
 
         <div class="footer-links-grid">
@@ -1660,7 +1681,6 @@
                   16630</span></li>
               <li><a href="https://wa.me/6285889429989" target="_blank" rel="noopener">+62 858 - 8942- 9989</a></li>
               <li><a href="mailto:harsadigitech@gmail.com">harsadigitech@gmail.com</a></li>
-              <li><span style="font-size: 0.88rem; color: var(--text-subtle);">Direktur: Billy Rahmansyah</span></li>
             </ul>
           </div>
         </div>

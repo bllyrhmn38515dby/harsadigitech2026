@@ -143,7 +143,9 @@
       // Smooth scroll to contact section
       const contactSection = document.getElementById('kontak');
       if (contactSection) {
-        contactSection.scrollIntoView({ behavior: 'smooth' });
+        contactSection.scrollIntoView({
+          behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'
+        });
       }
 
       // Trigger notification toast

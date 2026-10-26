@@ -172,7 +172,7 @@
 }
 
 .faq-item.open .faq-q-text {
-  color: var(--hdt-orange);
+  color: var(--hdt-orange-text);
 }
 
 .faq-chevron {
@@ -187,7 +187,7 @@
 
 .faq-item.open .faq-chevron {
   transform: rotate(180deg);
-  color: var(--hdt-orange);
+  color: var(--hdt-orange-text);
 }
 
 /* ─── Answer Panel ────────────────────────────────────────────── */
@@ -252,7 +252,7 @@
   transition: color var(--transition-fast);
 }
 
-.faq-inline-link:hover { color: var(--hdt-orange); }
+.faq-inline-link:hover { color: var(--hdt-orange-text); }
 
 /* ─── Aside Panel ─────────────────────────────────────────────── */
 .faq-aside {
@@ -348,7 +348,7 @@
 
 .faq-cta-badge {
   display: inline-block;
-  background: linear-gradient(135deg, var(--hdt-orange), #ff7a45);
+  background: var(--hdt-orange-contrast);
   color: #fff;
   font-size: 0.7rem;
   font-weight: 700;
@@ -391,7 +391,7 @@
   justify-content: center;
   gap: 0.6rem;
   padding: 0.7rem 1rem;
-  background: #25d366;
+  background: #187a39;
   color: #fff;
   border-radius: var(--radius-md);
   font-size: 0.88rem;
@@ -400,7 +400,7 @@
 }
 
 .faq-wa-btn:hover {
-  background: #1da850;
+  background: #145c2c;
   transform: translateY(-2px);
   color: #fff;
 }
@@ -428,7 +428,7 @@
 .faq-contact-link {
   font-size: 0.85rem;
   font-weight: 600;
-  color: var(--hdt-orange);
+  color: var(--hdt-orange-text);
   white-space: nowrap;
   transition: color var(--transition-fast);
 }

@@ -15,24 +15,36 @@
 
   items.forEach(item => {
     const btn = item.querySelector('.faq-question');
-    if (!btn) return;
+    const panel = btn && document.getElementById(btn.getAttribute('aria-controls'));
+    if (!btn || !panel) return;
+
+    function setExpanded(expanded) {
+      item.classList.toggle('open', expanded);
+      btn.setAttribute('aria-expanded', String(expanded));
+      panel.setAttribute('aria-hidden', String(!expanded));
+      panel.inert = !expanded;
+    }
 
     btn.addEventListener('click', () => {
       const isOpen = item.classList.contains('open');
-
       // Close all others
       items.forEach(other => {
         if (other !== item) {
-          other.classList.remove('open');
           const ob = other.querySelector('.faq-question');
+          const otherPanel = ob && document.getElementById(ob.getAttribute('aria-controls'));
+          other.classList.remove('open');
           if (ob) ob.setAttribute('aria-expanded', 'false');
+          if (otherPanel) {
+            otherPanel.setAttribute('aria-hidden', 'true');
+            otherPanel.inert = true;
+          }
         }
       });
 
-      // Toggle this one
-      item.classList.toggle('open', !isOpen);
-      btn.setAttribute('aria-expanded', String(!isOpen));
+      setExpanded(!isOpen);
     });
+
+    setExpanded(item.classList.contains('open'));
   });
 
   /* ─── Category filter ────────────────────────────────────── */
@@ -40,6 +52,7 @@
   const emptyEl = document.createElement('p');
   emptyEl.className = 'faq-empty';
   emptyEl.textContent = 'Tidak ada pertanyaan dalam kategori ini.';
+  emptyEl.setAttribute('role', 'status');
   accordion.after(emptyEl);
 
   function filterFAQ(cat) {
@@ -51,13 +64,22 @@
 
       if (show) {
         item.classList.remove('faq-hidden');
+        item.removeAttribute('aria-hidden');
+        item.inert = false;
         visibleCount++;
       } else {
         // Close before hiding
         item.classList.remove('open');
         const ob = item.querySelector('.faq-question');
+        const panel = ob && document.getElementById(ob.getAttribute('aria-controls'));
         if (ob) ob.setAttribute('aria-expanded', 'false');
+        if (panel) {
+          panel.setAttribute('aria-hidden', 'true');
+          panel.inert = true;
+        }
         item.classList.add('faq-hidden');
+        item.setAttribute('aria-hidden', 'true');
+        item.inert = true;
       }
     });
 
@@ -69,10 +91,10 @@
       // Update active state
       tabs.forEach(t => {
         t.classList.remove('active');
-        t.setAttribute('aria-selected', 'false');
+        t.setAttribute('aria-pressed', 'false');
       });
       tab.classList.add('active');
-      tab.setAttribute('aria-selected', 'true');
+      tab.setAttribute('aria-pressed', 'true');
 
       filterFAQ(tab.getAttribute('data-faq-cat'));
     });
@@ -83,11 +105,18 @@
   if (firstItem) {
     firstItem.classList.add('open');
     const firstBtn = firstItem.querySelector('.faq-question');
-    if (firstBtn) firstBtn.setAttribute('aria-expanded', 'true');
+    if (firstBtn) {
+      firstBtn.setAttribute('aria-expanded', 'true');
+      const panel = document.getElementById(firstBtn.getAttribute('aria-controls'));
+      if (panel) {
+        panel.setAttribute('aria-hidden', 'false');
+        panel.inert = false;
+      }
+    }
   }
 
   /* ─── Scroll-triggered entrance animation ────────────────── */
-  if ('IntersectionObserver' in window) {
+  if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {

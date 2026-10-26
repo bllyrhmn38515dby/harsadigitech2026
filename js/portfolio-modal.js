@@ -368,6 +368,9 @@
   ───────────────────────────────────────────────────────────── */
   let currentIndex = 0;
   let isOpen = false;
+  let modalOpener = null;
+  let lightboxOpener = null;
+  let backgroundElements = [];
 
   /* ─────────────────────────────────────────────────────────────
      DOM REFERENCES — created on demand
@@ -385,6 +388,7 @@
     backdrop.id = 'pm-backdrop';
     backdrop.className = 'portfolio-modal-backdrop';
     backdrop.setAttribute('aria-hidden', 'true');
+    backdrop.inert = true;
 
     // Shell (scrollable content container)
     shell = document.createElement('div');
@@ -392,6 +396,7 @@
     shell.setAttribute('role', 'dialog');
     shell.setAttribute('aria-modal', 'true');
     shell.setAttribute('aria-labelledby', 'pm-title');
+    shell.tabIndex = -1;
     backdrop.appendChild(shell);
     document.body.appendChild(backdrop);
 
@@ -399,8 +404,12 @@
     lightbox = document.createElement('div');
     lightbox.className = 'pm-lightbox';
     lightbox.setAttribute('aria-hidden', 'true');
+    lightbox.setAttribute('role', 'dialog');
+    lightbox.setAttribute('aria-modal', 'true');
+    lightbox.setAttribute('aria-label', 'Pratinjau gambar proyek');
+    lightbox.inert = true;
     lightboxImg = document.createElement('img');
-    lightboxImg.alt = 'Screenshot Besar';
+    lightboxImg.alt = '';
     const lbClose = document.createElement('button');
     lbClose.className = 'pm-lightbox-close';
     lbClose.innerHTML = '&times;';
@@ -418,9 +427,33 @@
       if (e.key === 'Escape') {
         if (lightbox.classList.contains('open')) closeLightbox();
         else closeModal();
+        return;
       }
-      if (e.key === 'ArrowRight') navigateTo(currentIndex + 1);
-      if (e.key === 'ArrowLeft') navigateTo(currentIndex - 1);
+      if (e.key === 'Tab') {
+        const focusScope = lightbox.classList.contains('open') ? lightbox : shell;
+        const focusable = Array.from(focusScope.querySelectorAll(
+          'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+        )).filter(element => element.getClientRects().length > 0);
+        if (!focusable.length) {
+          e.preventDefault();
+          focusScope.focus();
+          return;
+        }
+
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (e.shiftKey && (document.activeElement === first || !focusScope.contains(document.activeElement))) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && (document.activeElement === last || !focusScope.contains(document.activeElement))) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
+      if (!lightbox.classList.contains('open') && !['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement.tagName)) {
+        if (e.key === 'ArrowRight') navigateTo(currentIndex + 1);
+        if (e.key === 'ArrowLeft') navigateTo(currentIndex - 1);
+      }
     });
   }
 
@@ -454,7 +487,7 @@
 
         <div class="pm-hero-content">
           <div class="pm-category-pill">${data.category}</div>
-          <h2 class="pm-hero-title" id="pm-title">${data.title} <span style="opacity:0.8; font-weight:400">— ${data.subtitle}</span></h2>
+          <h2 class="pm-hero-title" id="pm-title" tabindex="-1">${data.title} <span style="opacity:0.8; font-weight:400">— ${data.subtitle}</span></h2>
           <div class="pm-hero-meta">
             <span class="pm-client-chip">
               <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a1 1 0 110 2H4a1 1 0 110-2V4zm3 1h2v2H7V5zm2 4H7v2h2V9zm2-4h2v2h-2V5zm2 4h-2v2h2V9z" clip-rule="evenodd"/></svg>
@@ -519,10 +552,11 @@
         <div>
           <h3 class="pm-section-title">🖥️ Tampilan Antarmuka Sistem</h3>
           <div class="pm-gallery">
-            <div class="pm-screenshot-wrap" data-img="${data.bannerImage}" title="Klik untuk memperbesar">
+            <button type="button" class="pm-screenshot-wrap" data-img="${data.bannerImage}"
+              aria-label="Perbesar screenshot utama ${data.title}">
               <img src="${data.bannerImage}" alt="Screenshot utama ${data.title}" loading="lazy">
               <div class="pm-screenshot-label">Tampilan Dashboard Utama</div>
-            </div>
+            </button>
           </div>
         </div>
 
@@ -588,16 +622,23 @@
     shell.querySelector('#pm-prev').onclick = () => navigateTo(idx - 1);
     shell.querySelector('#pm-next').onclick = () => navigateTo(idx + 1);
     shell.querySelector('#pm-btn-consult').onclick = () => {
-      closeModal();
+      closeModal(false);
       const contactSection = document.getElementById('kontak');
-      if (contactSection) contactSection.scrollIntoView({ behavior: 'smooth' });
+      if (contactSection) {
+        contactSection.scrollIntoView({
+          behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'
+        });
+      }
       const msgArea = document.getElementById('contact-message');
-      if (msgArea) msgArea.value = `Saya tertarik dengan portofolio "${data.title}" (Klien: ${data.client}). Kami ingin mendiskusikan implementasi solusi serupa untuk instansi / perusahaan kami.`;
+      if (msgArea) {
+        msgArea.value = `Saya tertarik dengan portofolio "${data.title}" (Klien: ${data.client}). Kami ingin mendiskusikan implementasi solusi serupa untuk instansi / perusahaan kami.`;
+        msgArea.focus({ preventScroll: true });
+      }
     };
 
     // Lightbox on screenshot click
     shell.querySelectorAll('.pm-screenshot-wrap').forEach(wrap => {
-      wrap.addEventListener('click', () => openLightbox(wrap.dataset.img));
+      wrap.addEventListener('click', () => openLightbox(wrap.dataset.img, wrap.querySelector('img').alt, wrap));
     });
 
     // Scroll to top
@@ -610,6 +651,9 @@
         shell.querySelectorAll('.pm-timeline-step').forEach(el => el.classList.add('in-view'));
       }, 180);
     });
+
+    const title = shell.querySelector('#pm-title');
+    if (title && isOpen) title.focus({ preventScroll: true });
   }
 
   /* ─────────────────────────────────────────────────────────────
@@ -617,30 +661,45 @@
   ───────────────────────────────────────────────────────────── */
   function openModal(caseId) {
     buildModalDOM();
+    modalOpener = document.activeElement;
+    backgroundElements = Array.from(document.body.children)
+      .filter(element => element !== backdrop && element !== lightbox)
+      .map(element => ({ element, wasInert: element.inert }));
+    backgroundElements.forEach(({ element }) => { element.inert = true; });
     const idx = CASE_STUDIES.findIndex(c => c.id === caseId);
     currentIndex = idx >= 0 ? idx : 0;
 
     renderCase(CASE_STUDIES[currentIndex], currentIndex);
 
     backdrop.setAttribute('aria-hidden', 'false');
+    backdrop.inert = false;
     backdrop.classList.add('active');
+    shell.inert = false;
+    lightbox.inert = true;
     document.body.style.overflow = 'hidden';
     isOpen = true;
 
     // Focus management
     setTimeout(() => {
+      if (!isOpen) return;
       const closeBtn = shell.querySelector('#pm-close');
       if (closeBtn) closeBtn.focus();
     }, 100);
   }
 
-  function closeModal() {
+  function closeModal(restoreFocus = true) {
     if (!backdrop) return;
     backdrop.classList.remove('active');
     backdrop.setAttribute('aria-hidden', 'true');
+    backdrop.inert = true;
+    shell.inert = false;
     document.body.style.overflow = '';
     isOpen = false;
     closeLightbox();
+    backgroundElements.forEach(({ element, wasInert }) => { element.inert = wasInert; });
+    backgroundElements = [];
+    if (restoreFocus && modalOpener && modalOpener.isConnected) modalOpener.focus();
+    modalOpener = null;
   }
 
   function navigateTo(newIdx) {
@@ -652,16 +711,26 @@
   /* ─────────────────────────────────────────────────────────────
      LIGHTBOX
   ───────────────────────────────────────────────────────────── */
-  function openLightbox(src) {
+  function openLightbox(src, alt, opener) {
+    lightboxOpener = opener;
     lightboxImg.src = src;
+    lightboxImg.alt = alt;
+    lightbox.setAttribute('aria-label', `Pratinjau gambar: ${alt}`);
+    shell.inert = true;
+    lightbox.inert = false;
     lightbox.classList.add('open');
     lightbox.setAttribute('aria-hidden', 'false');
+    lightbox.querySelector('.pm-lightbox-close').focus();
   }
 
   function closeLightbox() {
     if (!lightbox) return;
     lightbox.classList.remove('open');
     lightbox.setAttribute('aria-hidden', 'true');
+    lightbox.inert = true;
+    if (shell && isOpen) shell.inert = false;
+    if (lightboxOpener && lightboxOpener.isConnected && isOpen) lightboxOpener.focus();
+    lightboxOpener = null;
   }
 
   /* ─────────────────────────────────────────────────────────────

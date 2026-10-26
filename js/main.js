@@ -23,7 +23,7 @@
     const toast = document.createElement('div');
     toast.className = `toast toast-${type} glass-panel`;
     toast.innerHTML = `
-      <span class="toast-icon">⚡</span>
+      <span class="toast-icon" aria-hidden="true">⚡</span>
       <span class="toast-text">${message}</span>
     `;
 
@@ -48,11 +48,19 @@
   document.documentElement.setAttribute('data-theme', currentTheme);
 
   if (themeToggleBtn) {
+    themeToggleBtn.setAttribute(
+      'aria-label',
+      currentTheme === 'dark' ? 'Aktifkan tema terang' : 'Aktifkan tema gelap'
+    );
     themeToggleBtn.addEventListener('click', () => {
       const activeTheme = document.documentElement.getAttribute('data-theme');
       const nextTheme = activeTheme === 'dark' ? 'light' : 'dark';
       document.documentElement.setAttribute('data-theme', nextTheme);
       localStorage.setItem('harsa_theme', nextTheme);
+      themeToggleBtn.setAttribute(
+        'aria-label',
+        nextTheme === 'dark' ? 'Aktifkan tema terang' : 'Aktifkan tema gelap'
+      );
 
       window.showToast(
         nextTheme === 'dark'
@@ -75,6 +83,11 @@
       mobileMenuBtn.classList.toggle('active');
       mobileDrawer.classList.toggle('active');
       mobileDrawer.setAttribute('aria-hidden', isExpanded);
+      mobileDrawer.inert = isExpanded;
+      mobileMenuBtn.setAttribute(
+        'aria-label',
+        isExpanded ? 'Buka menu navigasi' : 'Tutup menu navigasi'
+      );
     });
 
     // Close on clicking any link inside drawer
@@ -83,8 +96,18 @@
         mobileMenuBtn.classList.remove('active');
         mobileDrawer.classList.remove('active');
         mobileMenuBtn.setAttribute('aria-expanded', 'false');
+        mobileMenuBtn.setAttribute('aria-label', 'Buka menu navigasi');
         mobileDrawer.setAttribute('aria-hidden', 'true');
+        mobileDrawer.inert = true;
+        mobileMenuBtn.focus({ preventScroll: true });
       });
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && mobileMenuBtn.getAttribute('aria-expanded') === 'true') {
+        mobileMenuBtn.click();
+        mobileMenuBtn.focus();
+      }
     });
   }
 
@@ -140,8 +163,10 @@
       if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
         navLinks.forEach(link => {
           link.classList.remove('active');
+          link.removeAttribute('aria-current');
           if (link.getAttribute('href') === `#${sectionId}`) {
             link.classList.add('active');
+            link.setAttribute('aria-current', 'location');
           }
         });
       }
@@ -185,10 +210,10 @@
     btn.addEventListener('click', () => {
       filterBtns.forEach(b => {
         b.classList.remove('active');
-        b.setAttribute('aria-selected', 'false');
+        b.setAttribute('aria-pressed', 'false');
       });
       btn.classList.add('active');
-      btn.setAttribute('aria-selected', 'true');
+      btn.setAttribute('aria-pressed', 'true');
 
       const filter = btn.getAttribute('data-filter');
 
@@ -222,7 +247,9 @@
       const calcSection = document.getElementById('kalkulator');
 
       if (calcSection) {
-        calcSection.scrollIntoView({ behavior: 'smooth' });
+        calcSection.scrollIntoView({
+          behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'
+        });
       }
 
       // Map serviceName to radio option
@@ -234,7 +261,10 @@
       const targetRadio = document.querySelector(`input[name="project_type"][value="${targetRadioVal}"]`);
       if (targetRadio) {
         const parentCard = targetRadio.closest('.radio-card');
-        if (parentCard) parentCard.click();
+        if (parentCard) {
+          parentCard.click();
+          targetRadio.focus();
+        }
       }
     });
   });
@@ -263,32 +293,48 @@
       e.preventDefault();
 
       let isValid = true;
+      let firstInvalid = null;
       nameError.textContent = '';
       emailError.textContent = '';
       phoneError.textContent = '';
       messageError.textContent = '';
 
+      [nameInput, emailInput, phoneInput, messageInput].forEach(input => {
+        input.setAttribute('aria-invalid', 'false');
+      });
+
       if (!nameInput.value.trim()) {
         nameError.textContent = 'Silakan isi nama lengkap Anda';
+        nameInput.setAttribute('aria-invalid', 'true');
+        firstInvalid = firstInvalid || nameInput;
         isValid = false;
       }
 
       if (!emailInput.value.trim() || !validateEmail(emailInput.value.trim())) {
         emailError.textContent = 'Silakan masukkan alamat email yang valid';
+        emailInput.setAttribute('aria-invalid', 'true');
+        firstInvalid = firstInvalid || emailInput;
         isValid = false;
       }
 
       if (!phoneInput.value.trim() || phoneInput.value.trim().length < 8) {
         phoneError.textContent = 'Nomor telepon minimal 8 digit';
+        phoneInput.setAttribute('aria-invalid', 'true');
+        firstInvalid = firstInvalid || phoneInput;
         isValid = false;
       }
 
       if (!messageInput.value.trim()) {
         messageError.textContent = 'Silakan beri deskripsi singkat proyek Anda';
+        messageInput.setAttribute('aria-invalid', 'true');
+        firstInvalid = firstInvalid || messageInput;
         isValid = false;
       }
 
-      if (!isValid) return;
+      if (!isValid) {
+        firstInvalid.focus();
+        return;
+      }
 
       // Kumpulkan data form
       const serviceSelect = document.getElementById('contact-service');
