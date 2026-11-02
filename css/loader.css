@@ -1,0 +1,121 @@
+/* ============================================================
+   PAGE LOADER — Harsa Digitech
+   Splash screen saat halaman pertama kali dimuat
+   ============================================================ */
+
+#page-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--bg-page, #f0f4ff);
+  transition: opacity 0.55s cubic-bezier(0.4, 0, 0.2, 1),
+              visibility 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: opacity;
+}
+
+[data-theme="dark"] #page-loader {
+  background-color: #080d1a;
+}
+
+/* Saat loader sedang hilang */
+#page-loader.loader-hiding {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* Saat loader sudah selesai (dihapus dari layout) */
+#page-loader.loader-hidden {
+  display: none;
+}
+
+/* ── Konten Tengah ── */
+.loader-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  animation: loader-entry 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+@keyframes loader-entry {
+  from { opacity: 0; transform: translateY(16px) scale(0.92); }
+  to   { opacity: 1; transform: translateY(0)    scale(1); }
+}
+
+/* ── Logo ── */
+.loader-logo-wrap {
+  width: 72px;
+  height: 72px;
+  border-radius: 20px;
+  background: rgba(37, 99, 235, 0.08);
+  border: 1px solid rgba(37, 99, 235, 0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  animation: loader-logo-pulse 2s ease-in-out infinite;
+}
+
+@keyframes loader-logo-pulse {
+  0%, 100% { box-shadow: 0 0 0 0   rgba(37, 99, 235, 0.25); }
+  50%       { box-shadow: 0 0 0 12px rgba(37, 99, 235, 0);   }
+}
+
+.loader-logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* ── Brand Name ── */
+.loader-brand-name {
+  font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: var(--text-primary, #0f172a);
+}
+
+[data-theme="dark"] .loader-brand-name {
+  color: #f1f5f9;
+}
+
+.loader-brand-sub {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  color: var(--text-muted, #64748b);
+  text-align: center;
+  margin-top: -0.5rem;
+}
+
+/* ── Dot Spinner ── */
+.loader-dots {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 0.5rem;
+}
+
+.loader-dots span {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #2563eb, #7c3aed);
+  animation: loader-dot-bounce 1.2s ease-in-out infinite;
+}
+
+.loader-dots span:nth-child(1) { animation-delay: 0s;    }
+.loader-dots span:nth-child(2) { animation-delay: 0.18s; }
+.loader-dots span:nth-child(3) { animation-delay: 0.36s; }
+
+@keyframes loader-dot-bounce {
+  0%, 80%, 100% { transform: scale(0.75); opacity: 0.45; }
+  40%            { transform: scale(1.2);  opacity: 1;    }
+}
+

@@ -75,15 +75,41 @@
       rel="stylesheet">
   </noscript>
 
+  <!-- Google tag (gtag.js) — Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZQMWGBTS3B"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-ZQMWGBTS3B');
+  </script>
+
   <!-- Stylesheets -->
   <link rel="stylesheet" href="css/index.css">
   <link rel="stylesheet" href="css/glass.css">
   <link rel="stylesheet" href="css/responsive.css">
   <link rel="stylesheet" href="css/portfolio-modal.css">
   <link rel="stylesheet" href="css/faq.css">
+  <link rel="stylesheet" href="css/loader.css">
+  <link rel="stylesheet" href="css/lightbox.css">
 </head>
 
 <body>
+  <!-- ══ PAGE LOADER ════════════════════════════════════════════════════ -->
+  <div id="page-loader" aria-hidden="true" role="status" aria-label="Memuat halaman Harsa Digitech...">
+    <div class="loader-content">
+      <div class="loader-logo-wrap">
+        <img src="assets/images/hdt-logo.png" alt="Logo Harsa Digitech" class="loader-logo-img" fetchpriority="high">
+      </div>
+      <span class="loader-brand-name">HARSA DIGITECH</span>
+      <span class="loader-brand-sub">PT. HARSA DIGITAL TEKNOLOGI</span>
+      <div class="loader-dots" aria-hidden="true">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </div>
   <!-- Ambient Liquid Canvas Background -->
   <canvas id="liquid-canvas" aria-hidden="true"></canvas>
 
@@ -610,7 +636,7 @@
           <!-- Case Study 1: SIMAPAN -->
           <article class="case-card glass-panel" data-category="pemerintah" id="case-simapan">
             <div class="case-img-wrap">
-              <img src="assets/images/hero-dashboard.jpg" alt="Aplikasi SIMAPAN Inspektorat Kota Bogor"
+              <img src="assets/images/mockup-simapan.jpg" alt="Aplikasi SIMAPAN Inspektorat Kota Bogor"
                 class="case-thumb" loading="lazy">
               <div class="case-overlay">
                 <span class="category-pill">E-Government</span>
@@ -655,7 +681,7 @@
           <!-- Case Study 2: SILAJANG -->
           <article class="case-card glass-panel" data-category="pemerintah" id="case-silajang">
             <div class="case-img-wrap">
-              <img src="assets/images/case-aicloud.jpg" alt="Aplikasi SILAJANG Satpol PP Kota Bogor" class="case-thumb"
+              <img src="assets/images/mockup-silajang.jpg" alt="Aplikasi SILAJANG Satpol PP Kota Bogor" class="case-thumb"
                 loading="lazy">
               <div class="case-overlay">
                 <span class="category-pill">Ketertiban Umum</span>
@@ -700,7 +726,7 @@
           <!-- Case Study 3: ERALF.COM -->
           <article class="case-card glass-panel" data-category="swasta" id="case-eralf">
             <div class="case-img-wrap">
-              <img src="assets/images/case-finflow.jpg" alt="Website ERALF.COM Emiral Rangga Law Firm"
+              <img src="assets/images/mockup-eralf.jpg" alt="Website ERALF.COM Emiral Rangga Law Firm"
                 class="case-thumb" loading="lazy">
               <div class="case-overlay">
                 <span class="category-pill">Legal Portal</span>
@@ -745,7 +771,7 @@
           <!-- Case Study 4: EMETROLOGI -->
           <article class="case-card glass-panel" data-category="layanan" id="case-emetrologi">
             <div class="case-img-wrap">
-              <img src="assets/images/hero-dashboard.jpg" alt="Aplikasi EMETROLOGI Dinas Koperasi dan UMKM Kota Bogor"
+              <img src="assets/images/mockup-emetrologi.jpg" alt="Aplikasi EMETROLOGI Dinas Koperasi dan UMKM Kota Bogor"
                 class="case-thumb" loading="lazy">
               <div class="case-overlay">
                 <span class="category-pill">Layanan UMKM</span>
@@ -789,7 +815,7 @@
           <!-- Case Study 5: TJSLP / CSR -->
           <article class="case-card glass-panel" data-category="pemerintah" id="case-tjslp">
             <div class="case-img-wrap">
-              <img src="assets/images/case-aicloud.jpg" alt="Aplikasi TJSLP CSR Bappenda Kota Bogor" class="case-thumb"
+              <img src="assets/images/mockup-tjslp.jpg" alt="Aplikasi TJSLP CSR Bappenda Kota Bogor" class="case-thumb"
                 loading="lazy">
               <div class="case-overlay">
                 <span class="category-pill">Transparansi CSR</span>
@@ -840,6 +866,28 @@
         <div class="modal-content" id="modal-content-body">
           <!-- Dynamic Content Inserted via JS -->
         </div>
+      </div>
+    </div>
+
+    <!-- ══ PORTFOLIO LIGHTBOX ════════════════════════════════════════════ -->
+    <div id="lightbox" class="lightbox-backdrop" aria-hidden="true" aria-modal="true" role="dialog" aria-label="Tampilan gambar portofolio">
+      <button class="lightbox-close" id="lightbox-close" aria-label="Tutup lightbox">&times;</button>
+      <button class="lightbox-nav lightbox-prev" id="lightbox-prev" aria-label="Gambar sebelumnya">&#8249;</button>
+      <button class="lightbox-nav lightbox-next" id="lightbox-next" aria-label="Gambar berikutnya">&#8250;</button>
+
+      <div class="lightbox-inner" id="lightbox-inner">
+        <div class="lightbox-spinner" id="lightbox-spinner" aria-hidden="true"></div>
+        <img src="" alt="" class="lightbox-img" id="lightbox-img" draggable="false">
+
+        <div class="lightbox-caption">
+          <div class="lightbox-caption-text">
+            <span class="lightbox-caption-title" id="lightbox-caption-title"></span>
+            <span class="lightbox-caption-sub"   id="lightbox-caption-sub"></span>
+          </div>
+          <span class="lightbox-counter" id="lightbox-counter" aria-live="polite"></span>
+        </div>
+
+        <div class="lightbox-thumbs" id="lightbox-thumbs" role="group" aria-label="Navigasi gambar"></div>
       </div>
     </div>
 
@@ -1707,6 +1755,8 @@
   <script src="js/portfolio-modal.js"></script>
   <script src="js/faq.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/lightbox.js"></script>
+  <script src="js/loader.js"></script>
 </body>
 
 </html>

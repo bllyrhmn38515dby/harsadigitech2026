@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 — Halaman Tidak Ditemukan | Harsa Digitech</title>
+  <meta name="description" content="Halaman yang Anda cari tidak ditemukan. Kembali ke beranda PT. Harsa Digital Teknologi.">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/png" href="assets/images/hdt-logo.png">
+  <link rel="canonical" href="https://harsa-digitech-web.web.app/">
+
+  <!-- Google tag (gtag.js) — Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZQMWGBTS3B"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-ZQMWGBTS3B');
+    // Lacak event 404
+    gtag('event', 'page_not_found', {
+      'page_location': window.location.href,
+      'page_referrer': document.referrer
+    });
+  </script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400..800&family=Plus+Jakarta+Sans:wght@300..800&display=swap" rel="stylesheet">
+
+  <style>
+    /* ── CSS Variables (subset dari index.css) ── */
+    :root {
+      --primary:       #2563eb;
+      --primary-dark:  #1d4ed8;
+      --accent:        #f97316;
+      --text-primary:  #0f172a;
+      --text-muted:    #64748b;
+      --surface:       rgba(255,255,255,0.72);
+      --border-glass:  rgba(255,255,255,0.45);
+      --bg-page:       #f0f4ff;
+      --radius-xl:     1.25rem;
+      --radius-pill:   999px;
+      --font-display:  'Outfit', sans-serif;
+      --font-body:     'Plus Jakarta Sans', sans-serif;
+      --transition:    0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    [data-theme="dark"] {
+      --text-primary:  #f1f5f9;
+      --text-muted:    #94a3b8;
+      --surface:       rgba(15, 23, 42, 0.72);
+      --border-glass:  rgba(255,255,255,0.12);
+      --bg-page:       #080d1a;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--bg-page);
+      color: var(--text-primary);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* ── Animated Background ── */
+    .bg-orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.35;
+      pointer-events: none;
+      animation: orb-drift 12s ease-in-out infinite alternate;
+    }
+    .bg-orb-1 {
+      width: 520px; height: 520px;
+      background: radial-gradient(circle, #3b82f6 0%, transparent 70%);
+      top: -120px; left: -120px;
+      animation-delay: 0s;
+    }
+    .bg-orb-2 {
+      width: 420px; height: 420px;
+      background: radial-gradient(circle, #8b5cf6 0%, transparent 70%);
+      bottom: -100px; right: -80px;
+      animation-delay: -5s;
+    }
+    .bg-orb-3 {
+      width: 300px; height: 300px;
+      background: radial-gradient(circle, #f97316 0%, transparent 70%);
+      top: 40%; left: 60%;
+      animation-delay: -8s;
+      opacity: 0.18;
+    }
+    @keyframes orb-drift {
+      from { transform: translate(0, 0) scale(1); }
+      to   { transform: translate(30px, 20px) scale(1.08); }
+    }
+
+    /* ── Glass Panel ── */
+    .glass-card {
+      background: var(--surface);
+      backdrop-filter: blur(20px) saturate(1.6);
+      -webkit-backdrop-filter: blur(20px) saturate(1.6);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-xl);
+      box-shadow: 0 24px 64px rgba(15, 23, 42, 0.12), 0 4px 16px rgba(15, 23, 42, 0.06);
+    }
+
+    /* ── Main Content ── */
+    .error-wrapper {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      max-width: 560px;
+      padding: 2.5rem 3rem;
+      text-align: center;
+      margin: 1.5rem;
+    }
+
+    /* ── Logo ── */
+    .brand {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      margin-bottom: 2rem;
+      text-decoration: none;
+      color: var(--text-primary);
+    }
+    .brand-logo-img {
+      width: 36px;
+      height: 36px;
+      object-fit: contain;
+    }
+    .brand-name {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 1.1rem;
+      letter-spacing: 0.04em;
+    }
+
+    /* ── 404 Number ── */
+    .error-code {
+      font-family: var(--font-display);
+      font-size: clamp(5rem, 20vw, 8rem);
+      font-weight: 800;
+      line-height: 1;
+      background: linear-gradient(135deg, #2563eb 0%, #7c3aed 50%, #f97316 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.5rem;
+      animation: pulse-glow 3s ease-in-out infinite;
+    }
+    @keyframes pulse-glow {
+      0%, 100% { filter: drop-shadow(0 0 12px rgba(37, 99, 235, 0.4)); }
+      50%       { filter: drop-shadow(0 0 28px rgba(124, 58, 237, 0.5)); }
+    }
+
+    /* ── Divider ── */
+    .divider {
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, #2563eb, #7c3aed);
+      border-radius: 999px;
+      margin: 1rem auto 1.5rem;
+    }
+
+    /* ── Text ── */
+    .error-title {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      color: var(--text-primary);
+    }
+    .error-desc {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+    }
+
+    /* ── Buttons ── */
+    .btn-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      justify-content: center;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      border-radius: var(--radius-pill);
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: transform var(--transition), box-shadow var(--transition), opacity var(--transition);
+    }
+    .btn:hover  { transform: translateY(-2px); }
+    .btn:active { transform: translateY(0); }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: #ffffff;
+      box-shadow: 0 4px 20px rgba(37, 99, 235, 0.35);
+    }
+    .btn-primary:hover { box-shadow: 0 8px 28px rgba(37, 99, 235, 0.45); }
+
+    .btn-secondary {
+      background: var(--surface);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--border-glass);
+      color: var(--text-primary);
+    }
+    .btn-secondary:hover { box-shadow: 0 4px 16px rgba(15, 23, 42, 0.12); }
+
+    /* ── Quick Links ── */
+    .quick-links {
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border-glass);
+    }
+    .quick-links p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+    }
+    .quick-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      justify-content: center;
+    }
+    .quick-nav a {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--primary);
+      text-decoration: none;
+      padding: 0.3rem 0.8rem;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(37, 99, 235, 0.2);
+      background: rgba(37, 99, 235, 0.06);
+      transition: background var(--transition), border-color var(--transition);
+    }
+    .quick-nav a:hover {
+      background: rgba(37, 99, 235, 0.14);
+      border-color: rgba(37, 99, 235, 0.4);
+    }
+
+    /* ── Footer note ── */
+    .footer-note {
+      position: fixed;
+      bottom: 1.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      white-space: nowrap;
+      z-index: 10;
+    }
+
+    /* ── Theme toggle (minimal) ── */
+    .theme-btn {
+      position: fixed;
+      top: 1.25rem;
+      right: 1.25rem;
+      z-index: 100;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid var(--border-glass);
+      background: var(--surface);
+      backdrop-filter: blur(12px);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-primary);
+      transition: transform var(--transition);
+    }
+    .theme-btn:hover { transform: scale(1.08); }
+    .theme-btn svg   { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 2; }
+
+    [data-theme="light"] .moon-icon { display: none; }
+    [data-theme="dark"]  .sun-icon  { display: none; }
+
+    /* ── Responsive ── */
+    @media (max-width: 480px) {
+      .error-wrapper { padding: 2rem 1.5rem; }
+      .btn-group     { flex-direction: column; }
+      .btn           { width: 100%; justify-content: center; }
+      .footer-note   { display: none; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Animated background orbs -->
+  <div class="bg-orb bg-orb-1" aria-hidden="true"></div>
+  <div class="bg-orb bg-orb-2" aria-hidden="true"></div>
+  <div class="bg-orb bg-orb-3" aria-hidden="true"></div>
+
+  <!-- Theme Toggle -->
+  <button class="theme-btn" id="theme-btn" aria-label="Ganti tema tampilan" title="Ganti Mode Terang / Gelap">
+    <svg class="sun-icon" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+    <svg class="moon-icon" viewBox="0 0 24 24">
+      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+    </svg>
+  </button>
+
+  <!-- Main Card -->
+  <main class="error-wrapper glass-card" role="main">
+
+    <!-- Brand Logo -->
+    <a href="/" class="brand" aria-label="Kembali ke Beranda Harsa Digitech">
+      <img src="assets/images/hdt-logo.png" alt="Logo Harsa Digitech" class="brand-logo-img">
+      <span class="brand-name">HARSA DIGITECH</span>
+    </a>
+
+    <!-- 404 Code -->
+    <div class="error-code" aria-label="Error 404">404</div>
+    <div class="divider" aria-hidden="true"></div>
+
+    <!-- Message -->
+    <h1 class="error-title">Halaman Tidak Ditemukan</h1>
+    <p class="error-desc">
+      Maaf, halaman yang Anda cari tidak tersedia atau mungkin telah dipindahkan.<br>
+      Tidak perlu khawatir — kami siap memandu Anda kembali.
+    </p>
+
+    <!-- Action Buttons -->
+    <div class="btn-group">
+      <a href="/" class="btn btn-primary">
+        <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor">
+          <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"/>
+        </svg>
+        Kembali ke Beranda
+      </a>
+      <a href="https://wa.me/6285889429989" target="_blank" rel="noopener" class="btn btn-secondary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        Hubungi via WhatsApp
+      </a>
+    </div>
+
+    <!-- Quick Navigation -->
+    <div class="quick-links">
+      <p>Atau langsung menuju:</p>
+      <nav class="quick-nav" aria-label="Navigasi cepat">
+        <a href="/#tentang">Tentang Kami</a>
+        <a href="/#layanan">Layanan IT</a>
+        <a href="/#portofolio">Portofolio</a>
+        <a href="/#kalkulator">Kalkulator</a>
+        <a href="/#kontak">Kontak</a>
+        <a href="/#faq">FAQ</a>
+      </nav>
+    </div>
+
+  </main>
+
+  <!-- Footer note -->
+  <p class="footer-note">© 2026 PT. Harsa Digital Teknologi — Harsa Digitech</p>
+
+  <script>
+    // Sync dark/light theme dengan preferensi yang tersimpan
+    (function () {
+      const saved = localStorage.getItem('harsa_theme') || 'light';
+      document.documentElement.setAttribute('data-theme', saved);
+
+      document.getElementById('theme-btn').addEventListener('click', function () {
+        const current = document.documentElement.getAttribute('data-theme');
+        const next = current === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', next);
+        localStorage.setItem('harsa_theme', next);
+      });
+    })();
+  </script>
+</body>
+</html>
+

@@ -10,6 +10,9 @@
       "assets/docs/Company-Profile-PT-Harsa-Digital-Teknologi.pdf"
     ],
     "rewrites": [],
+    "cleanUrls": true,
+    "trailingSlash": false,
+    "404": "/404.html",
     "headers": [
       {
         "source": "**/*.@(js|css)",
